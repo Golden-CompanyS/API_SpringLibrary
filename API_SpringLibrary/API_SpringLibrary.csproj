@@ -201,8 +201,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\DatabaseHelper.cs" />
+    <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

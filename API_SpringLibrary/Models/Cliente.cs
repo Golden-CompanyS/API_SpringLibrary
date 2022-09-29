@@ -47,24 +47,26 @@ namespace API_SpringLibrary.Models
                 tempCli.IdCli = id;
                 tempCli.nomCli = reader["nomCli"].ToString();
                 tempCli.emailCli = reader["emailCli"].ToString();
-                tempCli.celCli = reader["celCli"].ToString(celCli);
-                tempCli.numEndCli = reader["numEndCli"].ToString();
+                tempCli.celCli = int.Parse(reader["celCli"].ToString());
+                tempCli.numEndCli = int.Parse(reader["numEndCli"].ToString());
             }
-            return tempUser;
+            return tempCli;
         }
-        public void InsertNewUser(User user)
+        public void InsertNewCli(Cliente cli)
         {
-            string query = "insert into tbUser (Username, PassUser) values ('user', 'pass')";
-            query = query.Replace("user", user.Username);
-            query = query.Replace("pass", user.PassUser);
+            string query = "insert into Cliente (nomCli, emailCli, celCli, numEndCli, compEndCli) values ('nome', 'email', 'cel', 'numEnd', 'compEnd')";
+            query = query.Replace("nome", cli.nomCli);
+            query = query.Replace("email", cli.emailCli);
+            query = query.Replace("cel", cli.celCli.ToString());
+            query = query.Replace("numEnd", cli.numEndCli.ToString());
+            query = query.Replace("compEnd", cli.compEndCli);
             command.CommandText = query;
             var executor = command.ExecuteNonQuery();
         }
-        public bool ValidadeUser(User user)
+        public bool ValidadeCli(Cliente cli)
         {
-            string query = "select * from tbUser where (Username = 'user' AND PassUser = 'pass')";
-            query = query.Replace("user", user.Username);
-            query = query.Replace("pass", user.PassUser);
+            string query = "select * from Cliente where (NomCli = 'nome')";
+            query = query.Replace("nome", cli.nomCli);
             command.CommandText = query;
             var reader = command.ExecuteReader();
             if (reader.Read())
