@@ -42,7 +42,7 @@ namespace API_SpringLibrary.Models
         MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         MySqlCommand command = DatabaseHelper.CreateComm();
 
-        public ClienteJuridico checkCliFByID(int id)
+        public ClienteFisico checkCliFByID(int id)
         {
             connection.Open();
             command.CommandText = "select * from, ClienteFisico where IdCli=@idCli;";
