@@ -211,6 +211,8 @@
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\Livro.cs" />
+    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Souvenir.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
