@@ -10,6 +10,7 @@ namespace API_SpringLibrary.Models
     public class Livro
     {
         public int idLiv { get; set; }
+        public string NomLivro { get; set; }
         public int ISBNLiv { get; set; }
         public string sinopLiv { get; set; }
         public string nomOriLiv { get; set; }
