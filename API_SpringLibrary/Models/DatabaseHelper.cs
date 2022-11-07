@@ -12,15 +12,18 @@ namespace API_SpringLibrary.Models
                                             ";Database=dbSpringLibrary" +
                                             ";User ID=root" +
                                             ";Password=1234567.;");
-        public static MySqlCommand CreateComm()
+
+        public static MySqlCommand CriaComando()
         {
             MySqlCommand command = new MySqlCommand(null, conexao);
             return command;
         }
+
         public void OpenConexao()
         {
             conexao.Open();
         }
+
         public void FechaConexao()
         {
             conexao.Close();

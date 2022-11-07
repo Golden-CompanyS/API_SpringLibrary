@@ -222,10 +222,8 @@
     <Compile Include="Models\ClienteJuridico.cs" />
     <Compile Include="Models\DatabaseHelper.cs" />
     <Compile Include="Models\Editora.cs" />
-    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\Livro.cs" />
-    <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
