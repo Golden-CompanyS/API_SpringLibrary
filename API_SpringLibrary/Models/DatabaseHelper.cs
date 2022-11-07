@@ -17,11 +17,11 @@ namespace API_SpringLibrary.Models
             MySqlCommand command = new MySqlCommand(null, conexao);
             return command;
         }
-        public void OpenConnec()
+        public void OpenConexao()
         {
             conexao.Open();
         }
-        public void CloseConnec()
+        public void FechaConexao()
         {
             conexao.Close();
         }
