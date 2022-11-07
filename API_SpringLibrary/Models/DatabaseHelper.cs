@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 
-
 namespace API_SpringLibrary.Models
 {
     public class DatabaseHelper
