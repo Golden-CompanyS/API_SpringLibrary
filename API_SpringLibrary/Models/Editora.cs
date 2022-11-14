@@ -42,7 +42,22 @@ namespace API_SpringLibrary.Models
             }
             return tempEdit;
         }
+        public List<Editora> AssignArts(MySqlDataReader reader)
+        {
+            List<Editora> editList = new List<Editora>();
+            while (reader.Read())
+            {
+                Editora tempEdit = new Editora();
+                tempEdit.IdEdit = int.Parse(reader["IdEdit"].ToString());
+                tempEdit.NomEdit = reader["NomEdit"].ToString();
+                tempEdit.CelEdit = reader["CelEdit"].ToString();
+                tempEdit.EmailEdit = reader["EmailEdit"].ToString();
+                artList.Add(tempEdit);
+            }
+            return editList;
+        }
 
-       
+
+
     }
 }
