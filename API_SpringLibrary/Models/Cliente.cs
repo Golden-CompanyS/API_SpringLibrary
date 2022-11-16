@@ -36,7 +36,7 @@ namespace API_SpringLibrary.Models
         public string compEndCli { get; set; }
         public string Senha { get; set; }
 
-        MySqlCommand command = DatabaseHelper.CreateComm();
+        MySqlCommand command = DatabaseHelper.CriaComando();
 
         public Cliente GetCliByID(int id)
         {

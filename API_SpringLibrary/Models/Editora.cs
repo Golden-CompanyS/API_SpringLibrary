@@ -10,13 +10,16 @@ namespace API_SpringLibrary.Models
 {
     public class Editora
     {
-        public Editora() { }
         public Editora (int idEdit, string nomEdit, string celEdit, string emailEdit)
         {
             IdEdit = idEdit;
             NomEdit = nomEdit;
             CelEdit = celEdit;
             EmailEdit = emailEdit;
+        }
+
+        public Editora()
+        {
         }
 
         public int IdEdit { get; set; }
@@ -42,6 +45,7 @@ namespace API_SpringLibrary.Models
             }
             return tempEdit;
         }
+
         public List<Editora> AssignEdits(MySqlDataReader reader)
         {
             List<Editora> editList = new List<Editora>();
@@ -58,9 +62,9 @@ namespace API_SpringLibrary.Models
         }
 
         //comandos a partir daqui
-        public List<Editora> GetAllArts()
+        public List<Editora> GetAllEdits()
         {
-            command.CommandText = ("call spcheckAllEdit()");
+            command.CommandText = ("call spcheckAllEdit();");
             var reader = command.ExecuteReader();
             List<Editora> edits = this.AssignEdits(reader);
             return edits;
@@ -76,7 +80,7 @@ namespace API_SpringLibrary.Models
         public void PostNewEditora(Editora edit)
         {
             string query =
-                "call spcadEdit('nome', 'celular', 'email')";
+                "call spcadEdit('nome', 'celular', 'email');";
             query = query.Replace("nome", edit.NomEdit);
             query = query.Replace("celular", edit.CelEdit);
             query = query.Replace("email", edit.EmailEdit);
@@ -86,7 +90,7 @@ namespace API_SpringLibrary.Models
         public void AlterEdit(int id, Editora edit)
         {
             string query =
-                "call spaltEdit(id, 'nome', 'celular', 'email')";
+                "call spaltEdit(id, 'nome', 'celular', 'email');";
             query = query.Replace("id", id.ToString());
             query = query.Replace("nome", edit.NomEdit);
             query = query.Replace("celular", edit.CelEdit);
