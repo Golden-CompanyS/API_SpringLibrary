@@ -92,5 +92,31 @@ namespace API_SpringLibrary.Models
         }
 
         //Metódos
+        public List<Cliente> GetAllClientes()
+        {
+            command.CommandText = ("select * from vwcheckAllCli;");
+            var reader = command.ExecuteReader();
+            List<Cliente> clientes = this.AssignClis(reader);
+            return clientes;
+        }
+        public Cliente GetCliByName(string nome)
+        {
+            command.CommandText = ("call spcheckCliByName(@nome);");
+            command.Parameters.Add("@nome", MySqlDbType.Varchar).Value = nome;
+            var reader = command.ExecuteReader();
+            Cliente res = this.AssignCli(reader);
+            return res;
+        }
+        public Cliente GetCliByEmail(string email)
+        {
+            command.CommandText = ("call spCheckCliByEmail(@email);");
+            command.Parameters.Add("@email", MySqlDbType.Varchar).Value = email;
+            var reader = command.ExecuteReader();
+            Cliente res = this.AssignCli(reader);
+            return res;
+        }
+
+        //Neste caso, a tabela cliente é um intermédio entre o físico e jurídico, então não terá metódos de cadastro aqui
+        //Também seguindo conforme o banco de dados. 
     }
 }

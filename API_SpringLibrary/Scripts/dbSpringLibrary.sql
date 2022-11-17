@@ -6,6 +6,8 @@
     
     !! ATENTAR-SE AO CAPSLOCK !!
 */
+/* Como a tabela tbLivroAutor é composta por foreign keys, FOREIGN_KEY_CHECKS deve ser
+mudado para 0, desativando proibição quanto à alteração/exclusão destas */
 
 SET SQL_SAFE_UPDATES = 0;
 SET FOREIGN_KEY_CHECKS=0;
@@ -409,9 +411,12 @@ BEGIN
 	select * from tbCliente WHERE(nomCli = $vnomCli);
 END$$
 
-/* Como a tabela tbLivroAutor é composta por foreign keys, FOREIGN_KEY_CHECKS deve ser
-mudado para 0, desativando proibição quanto à alteração/exclusão destas */
-
+-- spCheckCliByEmail
+DELIMITER $$ 
+CREATE PROCEDURE spCheckCliByEmail($vemailCli varchar(125))
+BEGIN
+	select * from tbCliente where(emailCli = $vemailCli);
+END $$
 
 -- =============================================== --
 -- == -- == -- == -- Cliente Físico -- == -- == -- ==
