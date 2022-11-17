@@ -7,6 +7,7 @@ using System.Web.Http;
 using API_SpringLibrary.Models;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Web.UI.WebControls.WebParts;
 
 namespace API_SpringLibrary.Controllers
 {
@@ -27,7 +28,11 @@ namespace API_SpringLibrary.Controllers
         //Livro liv = new Livro();
         //Tirou produto também, então consertar a API
 
-        // Editora
+        // Editora metódos 
+
+        // Metódos Get:
+
+        //Pegando todas as editoras já cadastradas
         [HttpGet]
         [ActionName("getAllEdits")]
         public IEnumerable<Editora> GetAllEditoras()
@@ -48,6 +53,7 @@ namespace API_SpringLibrary.Controllers
             }
         }
 
+        //Pegando as editoras pelo ID
         [HttpGet]
         [ActionName("getEditByID")]
         public Editora GetEditById(int id)
@@ -75,8 +81,29 @@ namespace API_SpringLibrary.Controllers
             }
         }
 
+        //Pegando as editoras pelo nome
+        [HttpGet]
+        [ActionName("getEditsByName")]
+        public IEnumerable<Editora> GetEditsByName(string name)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = edit.GetEditsByParameter("NomEdit", name);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
+
+        //Metódos Post:
+
+        //Cadastrando nova editora
         [HttpPost]
-        [ActionName("postNewArt")]
+        [ActionName("postNewEdit")]
         public HttpResponseMessage PostNewEdit([FromBody] Editora edit)
         {
             var res = new HttpResponseMessage();
@@ -104,6 +131,9 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
+        //Metódos Put:
+
+        //Alterando uma editora
         [HttpPut]
         [ActionName("alterEdit")]
         public HttpResponseMessage UpdateEdit(int id, [FromBody] Editora editora)
@@ -133,6 +163,9 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
+        //Metódo delete:]
+
+        //Deletando uma editora
         [HttpDelete]
         [ActionName("deleteEdit")]
         public HttpResponseMessage DeleteEdit(int id)
@@ -161,5 +194,7 @@ namespace API_SpringLibrary.Controllers
             }
             return res;
         }
+
+        //Continuar a partir daqui
     }
 }

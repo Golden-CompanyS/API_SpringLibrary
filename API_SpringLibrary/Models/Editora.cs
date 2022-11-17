@@ -18,6 +18,13 @@ namespace API_SpringLibrary.Models
             EmailEdit = emailEdit;
         }
 
+        public Editora(string nomEdit, string celEdit, string emailEdit)
+        {
+            NomEdit = nomEdit;
+            CelEdit = celEdit;
+            EmailEdit = emailEdit;
+        }
+
         public Editora()
         {
         }
@@ -75,6 +82,16 @@ namespace API_SpringLibrary.Models
             command.Parameters.Add("@id", MySqlDbType.Int64).Value = id;
             var reader = command.ExecuteReader();
             Editora res = this.AssignEdit(reader);
+            return res;
+        }
+        public IEnumerable<Editora> GetEditsByParameter(string column, string parVal)
+        {
+            string query = "select * from tbEditora where placeholder like 'parameter%'";
+            query = query.Replace("parameter", parVal);
+            query = query.Replace("placeholder", column);
+            command.CommandText = query;
+            var reader = command.ExecuteReader();
+            IEnumerable<Editora> res = this.AssignEdits(reader);
             return res;
         }
         public void PostNewEditora(Editora edit)
