@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,15 +10,39 @@ namespace API_SpringLibrary.Models
 {
     public class Cliente
     {
-        //finalizar
+
+    public Cliente(int idCli, string nomCli, boolean tipoCli, string celCli, string emailCli, string senhaCli,
+        string cepCli, int numEndCli, string compEndCli)
+        {
+            IdCli = idCli;
+            NomCli = nomCli;
+            TipoCli = tipoCli;
+            CelCli = celCli;
+            EmailCli = emailCli;
+            SenhaCli = senhaCli;
+            CEPCli = cepCli;
+            NumEndCli = numEndCli;
+            CompEndCli = compEndCli;
+        }
+        public Cliente(string nomCli, boolean tipoCli, string celCli, string emailCli, string senhaCli,
+    string cepCli, int numEndCli, string compEndCli)
+        {
+            NomCli = nomCli;
+            TipoCli = tipoCli;
+            CelCli = celCli;
+            EmailCli = emailCli;
+            SenhaCli = senhaCli;
+            CEPCli = cepCli;
+            NumEndCli = numEndCli;
+            CompEndCli = compEndCli;
+        }
         public Cliente()
         {
-
         }
 
         public int IdCli {  get; set; }
         public string NomCli { get; set; }
-        public bool TipoCli { get; set; }
+        public boolean TipoCli { get; set; }
         public string CelCli { get; set; }  
         public string EmailCli { get; set; }
         public string SenhaCli { get; set; }
