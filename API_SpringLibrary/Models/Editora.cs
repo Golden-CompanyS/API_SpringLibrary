@@ -71,7 +71,7 @@ namespace API_SpringLibrary.Models
         }
         public Editora GetEditById(int id)
         {
-            command.CommandText = ("call spcheckEditById(id);");
+            command.CommandText = ("call spcheckEditById(@id);");
             command.Parameters.Add("@id", MySqlDbType.Int64).Value = id;
             var reader = command.ExecuteReader();
             Editora res = this.AssignEdit(reader);
