@@ -68,7 +68,7 @@ namespace API_SpringLibrary.Models
             return editList;
         }
 
-        //comandos a partir daqui
+        //Metódos
         public List<Editora> GetAllEdits()
         {
             command.CommandText = ("call spcheckAllEdit();");
