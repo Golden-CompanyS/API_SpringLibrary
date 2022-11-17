@@ -10,7 +10,6 @@ namespace API_SpringLibrary.Models
 {
     public class Cliente
     {
-
     public Cliente(int idCli, string nomCli, boolean tipoCli, string celCli, string emailCli, string senhaCli,
         string cepCli, int numEndCli, string compEndCli)
         {
