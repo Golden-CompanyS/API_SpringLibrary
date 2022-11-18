@@ -1,13 +1,8 @@
-﻿using System;
+﻿using API_SpringLibrary.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using API_SpringLibrary.Models;
-using MySql.Data.MySqlClient;
-using System.Configuration;
-using System.Web.UI.WebControls.WebParts;
 
 namespace API_SpringLibrary.Controllers
 {
