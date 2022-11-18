@@ -10,13 +10,7 @@ namespace API_SpringLibrary.Models
     public class ClienteFisico
     {
         //Finalizar
-        public ClienteFisico()
-        {
-        }
-
-        public string CPFCli { get; set; }
-        public int IdCli { get; set; }
-        public date DtNascCli { get; set; }
+      
 
        //Metódos 
     }

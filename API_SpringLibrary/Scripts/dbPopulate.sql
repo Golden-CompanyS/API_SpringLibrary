@@ -126,6 +126,8 @@ call spaltCliFis(2, 'Gus Rodrigues', '1194320943', 'gusthienx@gmail.com', '$2a$1
 
 select * from vwcheckCliFis;
 
+select * from vwcheckAllCli;
+
 /* tbCliJur */
 call spcadCliJur('Loud', '1136570927', 'loud@suporte.com.br', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', '06210027', 10, 'Bloco 10', "01345846258741", 'LOUD GG', 'Thaiga');
 call spcadCliJur('Jornal BG News', '11958424397', 'bgnews@gmail.com', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', '05089000', 678 , null, "15485248562154", 'MIDIAS BGNEWS', 'Madu Gaspar');

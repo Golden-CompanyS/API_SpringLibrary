@@ -1,8 +1,13 @@
-﻿using API_SpringLibrary.Models;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using API_SpringLibrary.Models;
+using MySql.Data.MySqlClient;
+using System.Configuration;
+
 
 namespace API_SpringLibrary.Controllers
 {
@@ -150,7 +155,7 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
-        //Metódo delete:]
+        //Metódo delete:
 
         //Deletando uma editora
         [HttpDelete]
