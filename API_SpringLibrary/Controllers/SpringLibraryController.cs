@@ -17,16 +17,8 @@ namespace API_SpringLibrary.Controllers
         DatabaseHelper db = new DatabaseHelper();
 
         // Models 
-
-       // Autor aut = new Autor();
-       // Cliente cli = new Cliente();
-        //ClienteFisico cliFis = new ClienteFisico();
-       // ClienteJuridico cliJur = new ClienteJuridico();
         Editora edit = new Editora();
-        //Tirou a tabela endereço, consertar na API 
-       // Genero gen = new Genero();
-        //Livro liv = new Livro();
-        //Tirou produto também, então consertar a API
+        Cliente cli = new Cliente();    
 
         // Editora metódos 
 
@@ -193,6 +185,73 @@ namespace API_SpringLibrary.Controllers
                 }
             }
             return res;
+        }
+
+        // Cliente metódos 
+
+        //Metódos get:
+
+        //Pegando todos os clientes já cadastrados
+        [HttpGet]
+        [ActionName("getAllClis")]
+        public IEnumerable<Cliente> GetAllClientes()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = cli.GetAllClientes();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
+
+        //Pegando clientes pelo nome
+        [HttpGet]
+        [ActionName("GetCliByName")]
+        public Cliente GetCliByName(string nome)
+        {
+                try
+                {
+                    db.OpenConexao();
+                    var res = cli.GetCliByName(nome);
+                    return res;
+                }
+                catch
+                {
+                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+
+        //Pegando clientes pelo email
+        [HttpGet]
+        [ActionName("GetCliByEmail")]
+        public Cliente GetCliByEmail(string email)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = cli.GetCliByEmail(email);
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
         }
 
         //Continuar a partir daqui

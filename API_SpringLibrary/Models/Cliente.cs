@@ -10,7 +10,7 @@ namespace API_SpringLibrary.Models
 {
     public class Cliente
     {
-    public Cliente(int idCli, string nomCli, boolean tipoCli, string celCli, string emailCli, string senhaCli,
+    public Cliente(int idCli, string nomCli, bool tipoCli, string celCli, string emailCli, string senhaCli,
         string cepCli, int numEndCli, string compEndCli)
         {
             IdCli = idCli;
@@ -23,7 +23,7 @@ namespace API_SpringLibrary.Models
             NumEndCli = numEndCli;
             CompEndCli = compEndCli;
         }
-        public Cliente(string nomCli, boolean tipoCli, string celCli, string emailCli, string senhaCli,
+        public Cliente(string nomCli, bool tipoCli, string celCli, string emailCli, string senhaCli,
     string cepCli, int numEndCli, string compEndCli)
         {
             NomCli = nomCli;
@@ -41,7 +41,7 @@ namespace API_SpringLibrary.Models
 
         public int IdCli {  get; set; }
         public string NomCli { get; set; }
-        public boolean TipoCli { get; set; }
+        public bool TipoCli { get; set; }
         public string CelCli { get; set; }  
         public string EmailCli { get; set; }
         public string SenhaCli { get; set; }
@@ -59,12 +59,12 @@ namespace API_SpringLibrary.Models
             {
                 tempCli.IdCli = int.Parse(reader["idCli"].ToString());
                 tempCli.NomCli = reader["nomCli"].ToString();
-                tempCli.TipoCli = boolean.Parse(reader["tipoCli"].ToString());
+                tempCli.TipoCli = bool.Parse(reader["tipoCli"].ToString());
                 tempCli.CelCli = reader["celCli"].ToString();
                 tempCli.EmailCli = reader["emailCli"].ToString();
                 tempCli.SenhaCli = reader["senhaCli"].ToString();
                 tempCli.CEPCli = reader["CEPCli"].ToString();
-                tempCli.NumEndCli = reader["numEndCli"].ToString();
+                tempCli.NumEndCli = int.Parse(reader["numEndCli"].ToString());
                 tempCli.CompEndCli = reader["compEndCli"].ToString();
             }
             return tempCli;
@@ -78,12 +78,12 @@ namespace API_SpringLibrary.Models
                 Cliente tempCli = new Cliente();
                 tempCli.IdCli = int.Parse(reader["idCli"].ToString());
                 tempCli.NomCli = reader["nomCli"].ToString();
-                tempCli.TipoCli = boolean.Parse(reader["tipoCli"].ToString());
+                tempCli.TipoCli = bool.Parse(reader["tipoCli"].ToString());
                 tempCli.CelCli = reader["celCli"].ToString();
                 tempCli.EmailCli = reader["emailCli"].ToString();
                 tempCli.SenhaCli = reader["senhaCli"].ToString();
                 tempCli.CEPCli = reader["CEPCli"].ToString();
-                tempCli.NumEndCli = reader["numEndCli"].ToString();
+                tempCli.NumEndCli = int.Parse(reader["numEndCli"].ToString());
                 tempCli.CompEndCli = reader["compEndCli"].ToString();
                 editList.Add(tempCli);
             }
@@ -101,7 +101,7 @@ namespace API_SpringLibrary.Models
         public Cliente GetCliByName(string nome)
         {
             command.CommandText = ("call spcheckCliByName(@nome);");
-            command.Parameters.Add("@nome", MySqlDbType.Varchar).Value = nome;
+            command.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
             var reader = command.ExecuteReader();
             Cliente res = this.AssignCli(reader);
             return res;
@@ -109,7 +109,7 @@ namespace API_SpringLibrary.Models
         public Cliente GetCliByEmail(string email)
         {
             command.CommandText = ("call spCheckCliByEmail(@email);");
-            command.Parameters.Add("@email", MySqlDbType.Varchar).Value = email;
+            command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
             var reader = command.ExecuteReader();
             Cliente res = this.AssignCli(reader);
             return res;
