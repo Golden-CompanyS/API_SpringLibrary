@@ -115,6 +115,25 @@ namespace API_SpringLibrary.Models
             return res;
         }
 
+        //Validando user para Login
+
+        public bool ValidateUser(Cliente user)
+        {
+            string query = "select * from tbCliente where (EmailCli = 'email' AND SenhaCli = 'senha')";
+            query = query.Replace("email", user.EmailCli);
+            query = query.Replace("senha", user.SenhaCli);
+            command.CommandText = query;
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         //Neste caso, a tabela cliente é um intermédio entre o físico e jurídico, então não terá metódos de cadastro aqui
         //Também seguindo conforme o banco de dados. 
     }

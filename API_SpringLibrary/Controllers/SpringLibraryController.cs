@@ -254,6 +254,34 @@ namespace API_SpringLibrary.Controllers
             }
         }
 
+        //Validando user
+        [HttpPost]
+        [ActionName("validateUser")]
+        public bool ValidateUser([FromBody] Cliente user)
+        {
+            if (user == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    bool validator = cli.ValidateUser(user);
+                    return validator;
+                }
+                catch
+                {
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+        }
+
         //Continuar a partir daqui
     }
 }

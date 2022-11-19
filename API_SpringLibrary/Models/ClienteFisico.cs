@@ -33,6 +33,42 @@ namespace API_SpringLibrary.Models
 
         public DateTime DtNascCliF { get; set; }
 
-       //Metódos 
+        MySqlCommand command = DatabaseHelper.CriaComando();
+
+        // Agiliza o reader pra não ter que ficar repetindo com comando abaixo!
+        public ClienteFisico AssignCliF(MySqlDataReader reader)
+        {
+            ClienteFisico tempCliF = new ClienteFisico();
+            if (reader.Read())
+            {
+                tempCliF.CPFCliF = reader["CPFCliF"].ToString();
+                tempCliF.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliF.DtNascCliF = DateTime.Parse(reader["dtNascCliFF"].ToString());
+            }
+            return tempCliF;
+        }
+
+        public List<ClienteFisico> AssignClisF(MySqlDataReader reader)
+        {
+            List<ClienteFisico> editList = new List<ClienteFisico>();
+            while (reader.Read())
+            {
+                ClienteFisico tempCliF = new ClienteFisico();
+                tempCliF.CPFCliF = reader["CPFCliF"].ToString();
+                tempCliF.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliF.DtNascCliF = DateTime.Parse(reader["dtNascCliFF"].ToString());
+                editList.Add(tempCliF);
+            }
+            return editList;
+        }
+
+        //Metódos 
+        public List<ClienteFisico> GetAllClientesF()
+        {
+            command.CommandText = ("select * from vwcheckCliFis;");
+            var reader = command.ExecuteReader();
+            List<ClienteFisico> clientes = this.AssignClisF(reader);
+            return clientes;
+        }
     }
 }
