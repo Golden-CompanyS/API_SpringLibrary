@@ -18,7 +18,8 @@ namespace API_SpringLibrary.Controllers
 
         // Models 
         Editora edit = new Editora();
-        Cliente cli = new Cliente();    
+        Cliente cli = new Cliente();
+        ClienteFisico cliF = new ClienteFisico();
 
         // Editora metódos 
 
@@ -280,6 +281,95 @@ namespace API_SpringLibrary.Controllers
                     db.FechaConexao();
                 }
             }
+        }
+
+        // Cliente Físico metódos 
+
+        //Metódos Get:
+
+        //Visualizar todos os clientes
+        [HttpGet]
+        [ActionName("GetAllClientesF")]
+        public IEnumerable<ClienteFisico> GetAllClientesF()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = cliF.GetAllClientesF();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
+
+        // Metódos Post:
+
+        //Cadastrar novo cliente físico
+        [HttpPost]
+        [ActionName("PostNewClienteF")]
+        public HttpResponseMessage PostNewClienteF([FromBody] ClienteFisico cliF)
+        {
+            var res = new HttpResponseMessage();
+            if (cliF == null)
+            {
+                res.StatusCode = HttpStatusCode.BadRequest;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    cliF.PostNewClienteF(cliF);
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+            return res;
+        }
+        
+        // Metódos Put: 
+
+        //Atualizar uma editora
+        [HttpPut]
+        [ActionName("AlterCliF")]
+        public HttpResponseMessage UpdateCliF(int id, [FromBody] ClienteFisico cliF)
+        {
+            var res = new HttpResponseMessage();
+            if (cliF == null)
+            {
+                res.StatusCode = HttpStatusCode.NotModified;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    cliF.AlterCliF(id, cliF);
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+            }
+            return res;
         }
 
         //Continuar a partir daqui

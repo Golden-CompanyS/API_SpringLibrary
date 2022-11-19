@@ -73,10 +73,6 @@ namespace API_SpringLibrary.Models
             return clientes;
         }
 
-
-
-
-
         //Cadastrar novo cliente físico
         public void PostNewClienteF(ClienteFisico cliF)
         {
