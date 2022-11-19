@@ -63,12 +63,55 @@ namespace API_SpringLibrary.Models
         }
 
         //Metódos 
+
+        //Visualizar todos os clientes cadastrados
         public List<ClienteFisico> GetAllClientesF()
         {
             command.CommandText = ("select * from vwcheckCliFis;");
             var reader = command.ExecuteReader();
             List<ClienteFisico> clientes = this.AssignClisF(reader);
             return clientes;
+        }
+
+
+
+
+
+        //Cadastrar novo cliente físico
+        public void PostNewClienteF(ClienteFisico cliF)
+        {
+            Cliente cli = new Cliente();
+            string query =
+                "call spcadCliFis('nome', 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cpf', 'dtNasc');";
+            query = query.Replace("nome", cli.NomCli);
+            query = query.Replace("celular", cli.CelCli);
+            query = query.Replace("senha", cli.SenhaCli);
+            query = query.Replace("cep", cli.CEPCli);
+            query = query.Replace("numEnd", cli.NumEndCli.ToString());
+            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("cpf", cliF.CPFCliF);
+            query = query.Replace("dtNasc", cliF.DtNascCliF.ToString());
+            command.CommandText = query;
+            var executor = command.ExecuteNonQuery();
+        }
+
+        //Atualizar cliente físico
+        public void AlterCliF(int id, ClienteFisico cliF)
+        {
+            Cliente cli = new Cliente();
+            string query =
+                "call spaltCliFis(id, 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cpf', 'dtNasc');";
+            query = query.Replace("id", id.ToString());
+            query = query.Replace("nome", cli.NomCli);
+            query = query.Replace("celular", cli.CelCli);
+            query = query.Replace("senha", cli.SenhaCli);
+            query = query.Replace("cep", cli.CEPCli);
+            query = query.Replace("numEnd", cli.NumEndCli.ToString());
+            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("cpf", cliF.CPFCliF);
+            query = query.Replace("dtNasc", cliF.DtNascCliF.ToString());
+            command.CommandText = query;
+            var executor = command.ExecuteNonQuery();
         }
     }
 }
