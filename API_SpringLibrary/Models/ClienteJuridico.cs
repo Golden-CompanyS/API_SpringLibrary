@@ -35,5 +35,38 @@ namespace API_SpringLibrary.Models
         public string FantaCliJ { get; set; }
 
         public string RepresCliJ { get; set; }
+
+        MySqlCommand command = DatabaseHelper.CriaComando();
+
+        // Agiliza o reader pra não ter que ficar repetindo com comando abaixo!
+        public ClienteJuridico AssignCliJ(MySqlDataReader reader)
+        {
+            ClienteJuridico tempCliJ = new ClienteJuridico();
+            if (reader.Read())
+            {
+                tempCliJ.CNPJCli = reader["CNPJCli"].ToString();
+                tempCliJ.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliJ.FantaCliJ = reader["fantaCliJ"].ToString();
+                tempCliJ.RepresCliJ = reader["represCliJ"].ToString();
+            }
+            return tempCliJ;
+        }
+
+        public List<ClienteJuridico> AssignClisJ(MySqlDataReader reader)
+        {
+            List<ClienteJuridico> editList = new List<ClienteJuridico>();
+            while (reader.Read())
+            {
+                ClienteJuridico tempCliJ = new ClienteJuridico();
+                tempCliJ.CNPJCli = reader["CNPJCli"].ToString();
+                tempCliJ.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliJ.FantaCliJ = reader["fantaCliJ"].ToString();
+                tempCliJ.RepresCliJ = reader["represCliJ"].ToString();
+                editList.Add(tempCliJ);
+            }
+            return editList;
+        }
+
+
     }
 }
