@@ -67,6 +67,52 @@ namespace API_SpringLibrary.Models
             return editList;
         }
 
+        //Visualizar todos os clientes jurídicos
+        public List<ClienteJuridico> GetAllClientesJ()
+        {
+            command.CommandText = ("select * from vwcheckCliJur;");
+            var reader = command.ExecuteReader();
+            List<ClienteJuridico> clientes = this.AssignClisJ(reader);
+            return clientes;
+        }
 
+        //Cadastrar novo cliente jurídico
+        public void PostNewClienteJ(ClienteJuridico cliJ)
+        {
+            Cliente cli = new Cliente();
+            string query =
+                "call spcadCliJur('nome', 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cnpj', 'fantasia', 'representante');";
+            query = query.Replace("nome", cli.NomCli);
+            query = query.Replace("celular", cli.CelCli);
+            query = query.Replace("senha", cli.SenhaCli);
+            query = query.Replace("cep", cli.CEPCli);
+            query = query.Replace("numEnd", cli.NumEndCli.ToString());
+            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("cnpj", cliJ.CNPJCli);
+            query = query.Replace("fantasia", cliJ.FantaCliJ);
+            query = query.Replace("representante", cliJ.RepresCliJ);
+            command.CommandText = query;
+            var executor = command.ExecuteNonQuery();
+        }
+
+        //Atualizar cliente juríridico
+        public void AlterCliJ(int id, ClienteJuridico cliJ)
+        {
+            Cliente cli = new Cliente();
+            string query =
+                "call spautCliJur(id, 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cnpj', 'fantasia', 'representante');";
+            query = query.Replace("id", id.ToString());
+            query = query.Replace("nome", cli.NomCli);
+            query = query.Replace("celular", cli.CelCli);
+            query = query.Replace("senha", cli.SenhaCli);
+            query = query.Replace("cep", cli.CEPCli);
+            query = query.Replace("numEnd", cli.NumEndCli.ToString());
+            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("cnpj", cliJ.CNPJCli);
+            query = query.Replace("fantasia", cliJ.FantaCliJ);
+            query = query.Replace("representante", cliJ.RepresCliJ);
+            command.CommandText = query;
+            var executor = command.ExecuteNonQuery();
+        }
     }
 }

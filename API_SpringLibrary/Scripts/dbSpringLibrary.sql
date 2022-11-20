@@ -537,7 +537,7 @@ BEGIN
 	CEPCli=$CEPCli, numEndCli=$numEndCli, compEndCli=$compEndCli where idCli=$idCli;
 END$$
 
--- vwCheckCliFis
+-- vwCheckCliJur
 create view vwcheckCliJur as select
 	tbCliente.idCli as 'ID',
 	nomCli as 'Nome', 

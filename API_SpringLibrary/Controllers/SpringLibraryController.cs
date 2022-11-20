@@ -20,6 +20,7 @@ namespace API_SpringLibrary.Controllers
         Editora edit = new Editora();
         Cliente cli = new Cliente();
         ClienteFisico cliF = new ClienteFisico();
+        ClienteJuridico cliJ = new ClienteJuridico();
 
         // Editora metódos 
 
@@ -342,7 +343,7 @@ namespace API_SpringLibrary.Controllers
         
         // Metódos Put: 
 
-        //Atualizar uma editora
+        //Atualizar um cliente físico
         [HttpPut]
         [ActionName("AlterCliF")]
         public HttpResponseMessage UpdateCliF(int id, [FromBody] ClienteFisico cliF)
@@ -371,6 +372,96 @@ namespace API_SpringLibrary.Controllers
             }
             return res;
         }
+
+        // Cliente Jurídico métodos
+
+        // Métódos GET:
+
+        //Visualizar todos os clientes jurídicos
+        [HttpGet]
+        [ActionName("GetAllClientesJ")]
+        public IEnumerable<ClienteJuridico> GetAllClientesJ()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = cliJ.GetAllClientesJ();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
+
+        // Metódos Post:
+
+        //Cadastrar novo cliente jurídico
+        [HttpPost]
+        [ActionName("PostNewClienteJ")]
+        public HttpResponseMessage PostNewClienteJ([FromBody] ClienteJuridico cliJ)
+        {
+            var res = new HttpResponseMessage();
+            if (cliJ == null)
+            {
+                res.StatusCode = HttpStatusCode.BadRequest;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    cliJ.PostNewClienteJ(cliJ);
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+            return res;
+        }
+
+        // Metódos Put: 
+
+        //Atualizar um cliente jurídico
+        [HttpPut]
+        [ActionName("AlterCliJ")]
+        public HttpResponseMessage UpdateCliJ(int id, [FromBody] ClienteJuridico cliJ)
+        {
+            var res = new HttpResponseMessage();
+            if (cliJ == null)
+            {
+                res.StatusCode = HttpStatusCode.NotModified;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    cliJ.AlterCliJ(id, cliJ);
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+            }
+            return res;
+        }
+
 
         //Continuar a partir daqui
     }
