@@ -8,7 +8,7 @@ using API_SpringLibrary.Models;
 
 namespace API_SpringLibrary.Models
 {
-    public class ClienteFisico
+    public class ClienteFisico : Cliente 
     {
         public ClienteFisico(string cpfCli, int idCli, DateTime dtNascCliF)
         {
@@ -41,8 +41,16 @@ namespace API_SpringLibrary.Models
             ClienteFisico tempCliF = new ClienteFisico();
             if (reader.Read())
             {
-                tempCliF.CPFCliF = reader["CPFCliF"].ToString();
                 tempCliF.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliF.NomCli = reader["nomCli"].ToString();
+                tempCliF.TipoCli = bool.Parse(reader["tipoCli"].ToString());
+                tempCliF.CelCli = reader["celCli"].ToString();
+                tempCliF.EmailCli = reader["emailCli"].ToString();
+                tempCliF.SenhaCli = reader["senhaCli"].ToString();
+                tempCliF.CEPCli = reader["CEPCli"].ToString();
+                tempCliF.NumEndCli = int.Parse(reader["numEndCli"].ToString());
+                tempCliF.CompEndCli = reader["compEndCli"].ToString();
+                tempCliF.CPFCliF = reader["CPFCliF"].ToString();
                 tempCliF.DtNascCliF = DateTime.Parse(reader["dtNascCliFF"].ToString());
             }
             return tempCliF;
@@ -54,8 +62,16 @@ namespace API_SpringLibrary.Models
             while (reader.Read())
             {
                 ClienteFisico tempCliF = new ClienteFisico();
-                tempCliF.CPFCliF = reader["CPFCliF"].ToString();
                 tempCliF.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliF.NomCli = reader["nomCli"].ToString();
+                tempCliF.TipoCli = bool.Parse(reader["tipoCli"].ToString());
+                tempCliF.CelCli = reader["celCli"].ToString();
+                tempCliF.EmailCli = reader["emailCli"].ToString();
+                tempCliF.SenhaCli = reader["senhaCli"].ToString();
+                tempCliF.CEPCli = reader["CEPCli"].ToString();
+                tempCliF.NumEndCli = int.Parse(reader["numEndCli"].ToString());
+                tempCliF.CompEndCli = reader["compEndCli"].ToString();
+                tempCliF.CPFCliF = reader["CPFCliF"].ToString();
                 tempCliF.DtNascCliF = DateTime.Parse(reader["dtNascCliFF"].ToString());
                 editList.Add(tempCliF);
             }
