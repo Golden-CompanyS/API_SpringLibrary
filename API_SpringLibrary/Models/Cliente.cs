@@ -93,7 +93,7 @@ namespace API_SpringLibrary.Models
         //Metódos
         public List<Cliente> GetAllClientes()
         {
-            command.CommandText = ("select * from vwcheckAllCli;");
+            command.CommandText = ("select * from tbCliente;");
             var reader = command.ExecuteReader();
             List<Cliente> clientes = this.AssignClis(reader);
             return clientes;

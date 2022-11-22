@@ -78,7 +78,7 @@ namespace API_SpringLibrary.Models
         //Visualizar todos os clientes jurídicos
         public List<ClienteJuridico> GetAllClientesJ()
         {
-            command.CommandText = ("select * from vwcheckCliJur;");
+            command.CommandText = ("select * from tbCliJur;");
             var reader = command.ExecuteReader();
             List<ClienteJuridico> clientes = this.AssignClisJ(reader);
             return clientes;

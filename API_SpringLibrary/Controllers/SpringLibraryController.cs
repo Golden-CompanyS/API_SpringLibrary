@@ -195,7 +195,7 @@ namespace API_SpringLibrary.Controllers
 
         //Pegando todos os clientes já cadastrados
         [HttpGet]
-        [ActionName("getAllClis")]
+        [ActionName("GetAllClientes")]
         public IEnumerable<Cliente> GetAllClientes()
         {
             try

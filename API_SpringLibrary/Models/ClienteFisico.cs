@@ -83,7 +83,7 @@ namespace API_SpringLibrary.Models
         //Visualizar todos os clientes cadastrados
         public List<ClienteFisico> GetAllClientesF()
         {
-            command.CommandText = ("select * from vwcheckCliFis;");
+            command.CommandText = ("select * from tbCliFis;");
             var reader = command.ExecuteReader();
             List<ClienteFisico> clientes = this.AssignClisF(reader);
             return clientes;
