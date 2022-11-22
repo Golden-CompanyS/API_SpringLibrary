@@ -92,15 +92,15 @@ namespace API_SpringLibrary.Models
         //Cadastrar novo cliente físico
         public void PostNewClienteF(ClienteFisico cliF)
         {
-            Cliente cli = new Cliente();
+            
             string query =
                 "call spcadCliFis('nome', 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cpf', 'dtNasc');";
-            query = query.Replace("nome", cli.NomCli);
-            query = query.Replace("celular", cli.CelCli);
-            query = query.Replace("senha", cli.SenhaCli);
-            query = query.Replace("cep", cli.CEPCli);
-            query = query.Replace("numEnd", cli.NumEndCli.ToString());
-            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("nome", cliF.NomCli);
+            query = query.Replace("celular", cliF.CelCli);
+            query = query.Replace("senha", cliF.SenhaCli);
+            query = query.Replace("cep", cliF.CEPCli);
+            query = query.Replace("numEnd", cliF.NumEndCli.ToString());
+            query = query.Replace("complemento", cliF.CompEndCli);
             query = query.Replace("cpf", cliF.CPFCliF);
             query = query.Replace("dtNasc", cliF.DtNascCliF.ToString());
             command.CommandText = query;
@@ -110,16 +110,15 @@ namespace API_SpringLibrary.Models
         //Atualizar cliente físico
         public void AlterCliF(int id, ClienteFisico cliF)
         {
-            Cliente cli = new Cliente();
             string query =
                 "call spaltCliFis(id, 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cpf', 'dtNasc');";
             query = query.Replace("id", id.ToString());
-            query = query.Replace("nome", cli.NomCli);
-            query = query.Replace("celular", cli.CelCli);
-            query = query.Replace("senha", cli.SenhaCli);
-            query = query.Replace("cep", cli.CEPCli);
-            query = query.Replace("numEnd", cli.NumEndCli.ToString());
-            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("nome", cliF.NomCli);
+            query = query.Replace("celular", cliF.CelCli);
+            query = query.Replace("senha", cliF.SenhaCli);
+            query = query.Replace("cep", cliF.CEPCli);
+            query = query.Replace("numEnd", cliF.NumEndCli.ToString());
+            query = query.Replace("complemento", cliF.CompEndCli);
             query = query.Replace("cpf", cliF.CPFCliF);
             query = query.Replace("dtNasc", cliF.DtNascCliF.ToString());
             command.CommandText = query;

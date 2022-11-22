@@ -87,15 +87,14 @@ namespace API_SpringLibrary.Models
         //Cadastrar novo cliente jurídico
         public void PostNewClienteJ(ClienteJuridico cliJ)
         {
-            Cliente cli = new Cliente();
             string query =
                 "call spcadCliJur('nome', 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cnpj', 'fantasia', 'representante');";
-            query = query.Replace("nome", cli.NomCli);
-            query = query.Replace("celular", cli.CelCli);
-            query = query.Replace("senha", cli.SenhaCli);
-            query = query.Replace("cep", cli.CEPCli);
-            query = query.Replace("numEnd", cli.NumEndCli.ToString());
-            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("nome", cliJ.NomCli);
+            query = query.Replace("celular", cliJ.CelCli);
+            query = query.Replace("senha", cliJ.SenhaCli);
+            query = query.Replace("cep", cliJ.CEPCli);
+            query = query.Replace("numEnd", cliJ.NumEndCli.ToString());
+            query = query.Replace("complemento", cliJ.CompEndCli);
             query = query.Replace("cnpj", cliJ.CNPJCli);
             query = query.Replace("fantasia", cliJ.FantaCliJ);
             query = query.Replace("representante", cliJ.RepresCliJ);
@@ -106,16 +105,15 @@ namespace API_SpringLibrary.Models
         //Atualizar cliente juríridico
         public void AlterCliJ(int id, ClienteJuridico cliJ)
         {
-            Cliente cli = new Cliente();
             string query =
                 "call spautCliJur(id, 'celular', 'email', 'senha', 'cep', 'numEnd', 'complemento', 'cnpj', 'fantasia', 'representante');";
             query = query.Replace("id", id.ToString());
-            query = query.Replace("nome", cli.NomCli);
-            query = query.Replace("celular", cli.CelCli);
-            query = query.Replace("senha", cli.SenhaCli);
-            query = query.Replace("cep", cli.CEPCli);
-            query = query.Replace("numEnd", cli.NumEndCli.ToString());
-            query = query.Replace("complemento", cli.CompEndCli);
+            query = query.Replace("nome", cliJ.NomCli);
+            query = query.Replace("celular", cliJ.CelCli);
+            query = query.Replace("senha", cliJ.SenhaCli);
+            query = query.Replace("cep", cliJ.CEPCli);
+            query = query.Replace("numEnd", cliJ.NumEndCli.ToString());
+            query = query.Replace("complemento", cliJ.CompEndCli);
             query = query.Replace("cnpj", cliJ.CNPJCli);
             query = query.Replace("fantasia", cliJ.FantaCliJ);
             query = query.Replace("representante", cliJ.RepresCliJ);
