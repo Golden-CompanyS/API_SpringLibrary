@@ -22,6 +22,7 @@ namespace API_SpringLibrary.Controllers
         ClienteFisico cliF = new ClienteFisico();
         ClienteJuridico cliJ = new ClienteJuridico();
         Autor aut = new Autor();
+        Genero gen = new Genero();  
 
         // Editora metódos 
 
@@ -553,6 +554,141 @@ namespace API_SpringLibrary.Controllers
                 {
                     db.OpenConexao();
                     aut.AlterAutor(id, autor);
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+            }
+            return res;
+        }
+
+        // Gênero métodos 
+
+        // Métodos Get:
+
+        // Pegando todos os gêneros cadastrados
+        [HttpGet]
+        [ActionName("GetAllGeneros")]
+        public IEnumerable<Genero> GetAllGeneros()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = gen.GetAllGeneros();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
+
+        //Pegando gêneros pelo ID
+        [HttpGet]
+        [ActionName("GetGenById")]
+        public Genero GetGenById(int id)
+        {
+            if (id == 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    var res = gen.GetGenById(id);
+                    return res;
+                }
+                catch
+                {
+                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+        }
+
+        //Pegando autores pelo nome
+        [HttpGet]
+        [ActionName("getGenByName")]
+        public IEnumerable<Genero> getGenByName(string name)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = gen.GetGenByParameter("NomGen", name);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
+
+        //Metódos Post:
+
+        //Cadastrando novo gênero
+        [HttpPost]
+        [ActionName("PostNewGenero")]
+        public HttpResponseMessage PostNewGenero([FromBody] Genero gen)
+        {
+            var res = new HttpResponseMessage();
+            if (gen == null)
+            {
+                res.StatusCode = HttpStatusCode.BadRequest;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    gen.PostNewGenero(gen);
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+            return res;
+        }
+
+        //Metódos Put:
+
+        //Alterando um gênero
+        [HttpPut]
+        [ActionName("AlterGenero")]
+        public HttpResponseMessage UpdateGenero(int id, [FromBody] Genero genero)
+        {
+            var res = new HttpResponseMessage();
+            if (genero == null)
+            {
+                res.StatusCode = HttpStatusCode.NotModified;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    gen.AlterGenero(id, genero);
                 }
                 catch
                 {
