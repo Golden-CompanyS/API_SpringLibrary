@@ -115,12 +115,5 @@ namespace API_SpringLibrary.Models
             command.CommandText = query;
             var executor = command.ExecuteNonQuery();
         }
-        public void DeleteEdit(int id)
-        {
-            string query = "delete from tbEditora where idEdit = id;";
-            query = query.Replace("id", id.ToString());
-            command.CommandText = query;
-            var executor = command.ExecuteNonQuery();
-        }
     }
 }

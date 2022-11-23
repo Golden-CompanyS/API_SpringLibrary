@@ -157,38 +157,6 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
-        //Metódo delete:
-
-        //Deletando uma editora
-        [HttpDelete]
-        [ActionName("deleteEdit")]
-        public HttpResponseMessage DeleteEdit(int id)
-        {
-            var res = new HttpResponseMessage();
-            if (id == 0)
-            {
-                res.StatusCode = HttpStatusCode.NotFound;
-            }
-            else
-            {
-                try
-                {
-                    db.OpenConexao();
-                    edit.DeleteEdit(id);
-                    res.StatusCode = HttpStatusCode.OK;
-                }
-                catch
-                {
-                    res.StatusCode = HttpStatusCode.Forbidden;
-                }
-                finally
-                {
-                    db.FechaConexao();
-                }
-            }
-            return res;
-        }
-
         // Cliente metódos 
 
         //Metódos get:
