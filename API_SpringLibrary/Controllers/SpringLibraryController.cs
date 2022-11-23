@@ -21,6 +21,7 @@ namespace API_SpringLibrary.Controllers
         Cliente cli = new Cliente();
         ClienteFisico cliF = new ClienteFisico();
         ClienteJuridico cliJ = new ClienteJuridico();
+        Autor aut = new Autor();
 
         // Editora metódos 
 
@@ -431,6 +432,141 @@ namespace API_SpringLibrary.Controllers
         }
 
 
-        //Continuar a partir daqui
+        // Autor métodos 
+
+        // Métodos Get:
+
+        // Pegando todos os autores cadastrados
+        [HttpGet]
+        [ActionName("GetAllAutores")]
+        public IEnumerable<Autor> GetAllAutores()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = aut.GetAllAutores();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
+
+        //Pegando autores pelo ID
+        [HttpGet]
+        [ActionName("GetAutById")]
+        public Autor GetAutById(int id)
+        {
+            if (id == 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    var res = aut.GetAutById(id);
+                    return res;
+                }
+                catch
+                {
+                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+        }
+
+        //Pegando autores pelo nome
+        [HttpGet]
+        [ActionName("getAutByName")]
+        public IEnumerable<Autor> getAutByName(string name)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = aut.GetAutByParameter("NomAut", name);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
+
+        //Metódos Post:
+
+        //Cadastrando novo autor
+        [HttpPost]
+        [ActionName("PostNewAutor")]
+        public HttpResponseMessage PostNewAutor([FromBody] Autor aut)
+        {
+            var res = new HttpResponseMessage();
+            if (aut == null)
+            {
+                res.StatusCode = HttpStatusCode.BadRequest;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    aut.PostNewAutor(aut);
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                }
+            }
+            return res;
+        }
+
+        //Metódos Put:
+
+        //Alterando um autor
+        [HttpPut]
+        [ActionName("AlterAutor")]
+        public HttpResponseMessage UpdateAutor(int id, [FromBody] Autor autor)
+        {
+            var res = new HttpResponseMessage();
+            if (autor == null)
+            {
+                res.StatusCode = HttpStatusCode.NotModified;
+            }
+            else
+            {
+                try
+                {
+                    db.OpenConexao();
+                    aut.AlterAutor(id, autor);
+                }
+                catch
+                {
+                    res.StatusCode = HttpStatusCode.NotAcceptable;
+                }
+                finally
+                {
+                    db.FechaConexao();
+                    res.StatusCode = HttpStatusCode.Created;
+                }
+            }
+            return res;
+        }
+
+
     }
 }
