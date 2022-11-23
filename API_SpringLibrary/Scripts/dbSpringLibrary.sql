@@ -470,23 +470,18 @@ END$$
 
 -- vwCheckCliFis
 create view vwcheckCliFis as select
-	tbCliente.idCli,
-	nomCli, 
-    celCli,
-    emailCli, 
-	senhaCli,
-    CEPCli,
-    numEndCli, 
-    compEndCli, 
-    CPFCliF, 
-    dtNascCliF
+	tbCliente.idCli as 'ID',
+	nomCli as 'Nome', 
+    celCli as 'Celular',
+    emailCli as 'Email', 
+	senhaCli as 'Senha',
+    CEPCli as 'CEP',
+    numEndCli as 'Número do endereço', 
+    compEndCli as 'Complemento', 
+    CPFCliF as 'CPF', 
+    dtNascCliF as 'Data de nascimento'
 		from tbCliente 
                 inner join tbCliFis on tbCliente.idCli = tbCliFis.idCli;
-
-DELIMITER $$
-create procedure sp
-
-$$
 
 -- =============================================== --
 -- == -- == -- == -- Cliente Jurídico -- == -- == -- 

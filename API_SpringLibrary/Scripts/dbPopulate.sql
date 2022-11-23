@@ -130,6 +130,12 @@ select * from vwcheckAllCli;
 
 call spCheckCliByEmail('jesuscristo@gmail.com');
 
+select * from tbCliFis;
+
+select tbCliente.idCli, nomCli, celCli, emailCli, senhaCli, CEPCli, numEndCli, compEndCli, CNPJCli, fantaCliJ, represCliJ from tbCliente inner join tbCliJur on tbCliente.idCli = tbCliJur.idCli;
+
+select tbCliente.idCli, nomCli, celCli, emailCli, senhaCli, CEPCli, numEndCli, compEndCli, CPFCliF, dtNascCliF from tbCliente inner join tbCliFis on tbCliente.idCli = tbCliFis.idCli;
+
 /* tbCliJur */
 call spcadCliJur('Loud', '1136570927', 'loud@suporte.com.br', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', '06210027', 10, 'Bloco 10', "01345846258741", 'LOUD GG', 'Thaiga');
 call spcadCliJur('Jornal BG News', '11958424397', 'bgnews@gmail.com', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', '05089000', 678 , null, "15485248562154", 'MIDIAS BGNEWS', 'Madu Gaspar');
