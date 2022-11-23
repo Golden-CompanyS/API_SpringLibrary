@@ -78,7 +78,7 @@ namespace API_SpringLibrary.Models
         //Visualizar todos os clientes jurídicos
         public List<ClienteJuridico> GetAllClientesJ()
         {
-            command.CommandText = ("select * from tbCliJur;");
+            command.CommandText = ("select tbCliente.idCli, nomCli, tipoCli, celCli, emailCli, senhaCli, CEPCli, numEndCli, compEndCli, CNPJCli, fantaCliJ, represCliJ from tbCliente inner join tbCliJur on tbCliente.idCli = tbCliJur.idCli;");
             var reader = command.ExecuteReader();
             List<ClienteJuridico> clientes = this.AssignClisJ(reader);
             return clientes;

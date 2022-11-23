@@ -72,7 +72,7 @@ namespace API_SpringLibrary.Models
                 tempCliF.NumEndCli = int.Parse(reader["numEndCli"].ToString());
                 tempCliF.CompEndCli = reader["compEndCli"].ToString();
                 tempCliF.CPFCliF = reader["CPFCliF"].ToString();
-                tempCliF.DtNascCliF = DateTime.Parse(reader["dtNascCliFF"].ToString());
+                tempCliF.DtNascCliF = DateTime.Parse(reader["dtNascCliF"].ToString());
                 editList.Add(tempCliF);
             }
             return editList;
@@ -83,7 +83,7 @@ namespace API_SpringLibrary.Models
         //Visualizar todos os clientes cadastrados
         public List<ClienteFisico> GetAllClientesF()
         {
-            command.CommandText = ("select * from tbCliFis;");
+            command.CommandText = ("select tbCliente.idCli, nomCli, tipoCli, celCli, emailCli, senhaCli, CEPCli, numEndCli, compEndCli, CPFCliF, dtNascCliF from tbCliente inner join tbCliFis on tbCliente.idCli = tbCliFis.idCli;");
             var reader = command.ExecuteReader();
             List<ClienteFisico> clientes = this.AssignClisF(reader);
             return clientes;
