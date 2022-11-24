@@ -10,12 +10,10 @@ namespace API_SpringLibrary.Models
 {
     public class LivroAutor
     {
-        public LivroAutor(string isbnLiv, int idAut, string nomLiv, string nomAut)
+        public LivroAutor(string isbnLiv, int idAut)
         {
             ISBNLiv = isbnLiv;
             IdAut = idAut;
-            NomLiv = nomLiv;
-            NomAut = nomAut;
         }
 
         public LivroAutor()
@@ -26,9 +24,9 @@ namespace API_SpringLibrary.Models
 
         public int IdAut { get; set; }
 
-        public string NomLiv { get; set; }
+        public Livro NomLiv { get; set; }
 
-        public string NomAut { get; set; }
+        public Autor NomAut { get; set; }
 
         MySqlCommand command = DatabaseHelper.CriaComando();
 
@@ -40,34 +38,13 @@ namespace API_SpringLibrary.Models
             {
                 tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
                 tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
-                tempLivAut.NomLiv = reader["nomLiv"].ToString();
+                string nome = reader["nomLiv"].ToString();
+                tempLivAut.NomLiv = nome;
                 tempLivAut.NomAut = reader["nomAut"].ToString();
             }
             return tempLivAut;
         }
 
-        public List<LivroAutor> AssignLivAuts(MySqlDataReader reader)
-        {
-            List<LivroAutor> editList = new List<LivroAutor>();
-            while (reader.Read())
-            {
-                LivroAutor tempLivAut = new LivroAutor();
-                tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
-                tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
-                tempLivAut.NomLiv = reader["nomLiv"].ToString();
-                tempLivAut.NomAut = reader["nomAut"].ToString();
-                editList.Add(tempLivAut);
-            }
-            return editList;
-        }
-
-        public List<LivroAutor> GetAllLivAut()
-        {
-            command.CommandText = ("select lv.ISBNLiv, titLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;");
-            var reader = command.ExecuteReader();
-            List<LivroAutor> livroautores = this.AssignLivAuts(reader);
-            return livroautores;
-        }
 
     }
 }

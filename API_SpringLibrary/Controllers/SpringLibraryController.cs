@@ -705,30 +705,6 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
-        // LivroAutor metódos 
-
-        // Metódos Get:
-
-        //Pegando todas os livros e autor já cadastrados
-        [HttpGet]
-        [ActionName("getAllLivAut")]
-        public IEnumerable<LivroAutor> GetAllLivAut()
-        {
-            try
-            {
-                db.OpenConexao();
-                var res = livaut.GetAllLivAut();
-                return res;
-            }
-            catch
-            {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
-            finally
-            {
-                db.FechaConexao();
-            }
-        }
 
 
     }

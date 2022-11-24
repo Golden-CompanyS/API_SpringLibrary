@@ -95,6 +95,8 @@ call spcadLiv(
 );
 call spinsertAutLiv(9786555980004, 1);
 
+select lv.ISBNLiv, titLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;
+
 call spcadLiv('9788594540188','Frankenstin',null,'Sinopse','linkImg',1,283,2,1991,39.99,300,true,4,7, 2);
 call spinsertAutLiv(9788594540188, 2);
 call spinsertAutLiv(9788594540188, 3);
