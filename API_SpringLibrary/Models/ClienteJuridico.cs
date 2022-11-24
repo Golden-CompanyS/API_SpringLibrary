@@ -66,8 +66,16 @@ namespace API_SpringLibrary.Models
             while (reader.Read())
             {
                 ClienteJuridico tempCliJ = new ClienteJuridico();
-                tempCliJ.CNPJCli = reader["CNPJCli"].ToString();
                 tempCliJ.IdCli = int.Parse(reader["idCli"].ToString());
+                tempCliJ.NomCli = reader["nomCli"].ToString();
+                tempCliJ.TipoCli = bool.Parse(reader["tipoCli"].ToString());
+                tempCliJ.CelCli = reader["celCli"].ToString();
+                tempCliJ.EmailCli = reader["emailCli"].ToString();
+                tempCliJ.SenhaCli = reader["senhaCli"].ToString();
+                tempCliJ.CEPCli = reader["CEPCli"].ToString();
+                tempCliJ.NumEndCli = int.Parse(reader["numEndCli"].ToString());
+                tempCliJ.CompEndCli = reader["compEndCli"].ToString();
+                tempCliJ.CNPJCli = reader["CNPJCli"].ToString();
                 tempCliJ.FantaCliJ = reader["fantaCliJ"].ToString();
                 tempCliJ.RepresCliJ = reader["represCliJ"].ToString();
                 editList.Add(tempCliJ);
