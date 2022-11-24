@@ -225,6 +225,7 @@
     <Compile Include="Models\Editora.cs" />
     <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\Livro.cs" />
+    <Compile Include="Models\LivroAutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
