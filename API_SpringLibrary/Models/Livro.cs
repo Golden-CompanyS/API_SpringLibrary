@@ -10,6 +10,8 @@ namespace API_SpringLibrary.Models
 {
     public class Livro
     {
+
+        //Questionar a professora como fazer para herdar mais de uma classe
         public Livro(string isbnLiv, string titLiv, string titOriLiv, string sinopLiv, string imgLiv, string pratLiv, 
             int numPagLiv, int numEdicaoLiv, int anoLiv, float precoLiv, int qtdLiv, bool ativoLiv, int idEdit, 
             int idGen, int idFunc)
@@ -64,6 +66,35 @@ namespace API_SpringLibrary.Models
         public int IdGen { get; set; }
 
         public int IdFunc { get; set; }
+
+        MySqlCommand command = DatabaseHelper.CriaComando();
+
+        // Agiliza o reader pra não ter que ficar repetindo com comando abaixo!
+        public Livro AssignLiv(MySqlDataReader reader)
+        {
+            Livro tempLiv = new Livro();
+            if (reader.Read())
+            {
+                tempLiv.ISBNLiv = reader["ISBNLiv"].ToString();
+                tempLiv.TitLiv = reader["titLiv"].ToString();
+                tempLiv.TitOriLiv = reader["titOriLiv"].ToString();
+                tempLiv.SinopLiv = reader["sinopLiv"].ToString();
+                tempLiv.ImgLiv = reader["imgLiv"].ToString();
+                tempLiv.PratLiv = reader["pratLiv"].ToString();
+                tempLiv.NumPagLiv = int.Parse(reader["numPagLiv"].ToString());
+                tempLiv.NumEdicaoLiv = int.Parse(reader["numEdicaoLiv"].ToString());
+                tempLiv.AnoLiv = int.Parse(reader["anoLiv"].ToString());
+                tempLiv.PrecoLiv = float.Parse(reader["precoLiv"].ToString());
+                tempLiv.QtdLiv = int.Parse(reader["qtdLiv"].ToString());
+                tempLiv.AtivoLiv = bool.Parse(reader["ativoLiv"].ToString());
+                tempLiv.IdEdit = int.Parse(reader["idEdit"].ToString());
+                //Terminar aqui dps 
+                tempLiv.IdGen = int.Parse(reader["idGen"].ToString());
+                // terminar aqui dps
+                tempLiv.IdFunc = int.Parse(reader["idFunc"].ToString());
+            }
+            return tempLiv;
+        }
 
     }
 }
