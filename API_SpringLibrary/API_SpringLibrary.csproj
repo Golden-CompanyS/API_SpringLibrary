@@ -283,10 +283,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\BDConexao\" />
-    <Folder Include="Views\Func\" />
-    <Folder Include="Views\SpringLibrary\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
