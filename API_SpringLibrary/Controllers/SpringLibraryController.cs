@@ -22,7 +22,9 @@ namespace API_SpringLibrary.Controllers
         ClienteFisico cliF = new ClienteFisico();
         ClienteJuridico cliJ = new ClienteJuridico();
         Autor aut = new Autor();
-        Genero gen = new Genero();  
+        Genero gen = new Genero();
+        Livro liv = new Livro(); //ainda nn fiz os métodos 
+        LivroAutor livaut = new LivroAutor();
 
         // Editora metódos 
 
@@ -701,6 +703,31 @@ namespace API_SpringLibrary.Controllers
                 }
             }
             return res;
+        }
+
+        // LivroAutor metódos 
+
+        // Metódos Get:
+
+        //Pegando todas os livros e autor já cadastrados
+        [HttpGet]
+        [ActionName("getAllLivAut")]
+        public IEnumerable<LivroAutor> GetAllLivAut()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = livaut.GetAllLivAut();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
         }
 
 
