@@ -10,20 +10,30 @@ namespace API_SpringLibrary.Models
 {
     public class Livro
     {
-        /* anoLiv SMALLINT NOT NULL,
-        precoLiv FLOAT(10,2) NOT NULL,
-        qtdLiv INT DEFAULT(0),
-        ativoLiv boolean,
-        idEdit INT NOT NULL,
-        FOREIGN KEY(idEdit)
-            REFERENCES tbEditora(idEdit),
-        idGen INT NOT NULL,
-        FOREIGN KEY(idGen)
-            REFERENCES tbGenero(idGen),
-        idFunc INT NOT NULL,
-        FOREIGN KEY(idFunc) 
-         REFERENCES tbFuncionario(idFunc) */
+        public Livro(string isbnLiv, string titLiv, string titOriLiv, string sinopLiv, string imgLiv, string pratLiv, 
+            int numPagLiv, int numEdicaoLiv, int anoLiv, float precoLiv, int qtdLiv, bool ativoLiv, int idEdit, 
+            int idGen, int idFunc)
+        {
+            ISBNLiv = isbnLiv;
+            TitLiv = titLiv;
+            TitOriLiv = titOriLiv;
+            SinopLiv = sinopLiv;
+            ImgLiv = imgLiv;
+            PratLiv = pratLiv;
+            NumPagLiv = numPagLiv;
+            NumEdicaoLiv = numEdicaoLiv;
+            AnoLiv = anoLiv;
+            PrecoLiv = precoLiv;
+            QtdLiv = qtdLiv;
+            AtivoLiv = ativoLiv;
+            IdEdit = idEdit;
+            IdGen = idGen;
+            IdFunc = idFunc;
+        }
 
+        public Livro()
+        {
+        }
 
         public string ISBNLiv { get; set; }
 
@@ -40,5 +50,20 @@ namespace API_SpringLibrary.Models
         public int NumPagLiv { get; set; }
 
         public int NumEdicaoLiv { get; set; }
+
+        public int AnoLiv { get; set; }
+
+        public float PrecoLiv { get; set; }
+
+        public int QtdLiv { get; set; }
+
+        public bool AtivoLiv { get; set; }
+
+        public int IdEdit { get; set; }
+
+        public int IdGen { get; set; }
+
+        public int IdFunc { get; set; }
+
     }
 }
