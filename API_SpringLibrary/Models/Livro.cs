@@ -10,8 +10,11 @@ namespace API_SpringLibrary.Models
 {
     public class Livro
     {
+        public Livro(string titLiv)
+        {
+            TitLiv = titLiv;
+        }
 
-        //Questionar a professora como fazer para herdar mais de uma classe
         public Livro(string isbnLiv, string titLiv, string titOriLiv, string sinopLiv, string imgLiv, string pratLiv, 
             int numPagLiv, int numEdicaoLiv, int anoLiv, float precoLiv, int qtdLiv, bool ativoLiv, int idEdit, 
             int idGen, int idFunc)

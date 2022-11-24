@@ -26,6 +26,8 @@ namespace API_SpringLibrary.Controllers
         Livro liv = new Livro(); //ainda nn fiz os métodos 
         LivroAutor livaut = new LivroAutor();
 
+        MySqlCommand command = DatabaseHelper.CriaComando();
+
         // Editora metódos 
 
         // Metódos Get:
@@ -705,6 +707,30 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
+        // LivroAutor metódos 
+
+        // Metódos Get:
+
+        //Pegando todas os livro e autores juntos já cadastrados
+        [HttpGet]
+        [ActionName("getAllLivroAutores")]
+        public IEnumerable<LivroAutor> GetAllLivroAutores()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = livaut.GetAllLivroAutores();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
 
 
     }

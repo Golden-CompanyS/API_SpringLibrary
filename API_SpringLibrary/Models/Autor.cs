@@ -10,14 +10,14 @@ namespace API_SpringLibrary.Models
 {
     public class Autor
     {
-        public Autor(int idAut, string nomAut)
+        public Autor(string nomAut)
         {
-            IdAut = idAut;
             NomAut = nomAut;
         }
 
-        public Autor(string nomAut)
+        public Autor(int idAut, string nomAut)
         {
+            IdAut = idAut;
             NomAut = nomAut;
         }
 

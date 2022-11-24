@@ -24,9 +24,9 @@ namespace API_SpringLibrary.Models
 
         public int IdAut { get; set; }
 
-        public Livro TitLiv { get; set; }
+        public Livro Titulo { get; set; }
 
-        public Autor NomAut { get; set; }
+        public Autor AutLiv { get; set; }
 
         MySqlCommand command = DatabaseHelper.CriaComando();
 
@@ -34,14 +34,12 @@ namespace API_SpringLibrary.Models
         public LivroAutor AssignLivAut(MySqlDataReader reader)
         {
             LivroAutor tempLivAut = new LivroAutor();
-            Autor tempAut = new Autor();
-            Livro tempLiv = new Livro();
             if (reader.Read())
             {
                 tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
                 tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
-                tempLiv.TitLiv = reader["titLiv"].ToString();
-                tempAut.NomAut = reader["nomAut"].ToString();
+                tempLivAut.Titulo = new Livro() { TitLiv = reader["titLiv"].ToString() };
+                tempLivAut.AutLiv = new Autor() { NomAut = reader["nomAut"].ToString() };
             }
             return tempLivAut;
         }
@@ -52,16 +50,24 @@ namespace API_SpringLibrary.Models
             while (reader.Read())
             {
                 LivroAutor tempLivAut = new LivroAutor();
-                Autor tempAut = new Autor();
-                Livro tempLiv = new Livro();
-                tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
-                tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
-                tempLiv.TitLiv = reader["titLiv"].ToString();
-                tempAut.NomAut = reader["nomAut"].ToString();
+                //tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
+                //tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
+                tempLivAut.Titulo = new Livro() { TitLiv = reader["titLiv"].ToString() };
+                tempLivAut.AutLiv = new Autor() { NomAut = reader["nomAut"].ToString() };
                 editList.Add(tempLivAut);
             }
             return editList;
         }
+
+        //Métodos
+        public List<LivroAutor> GetAllLivroAutores()
+        {
+            command.CommandText = ("select titLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;");
+            var reader = command.ExecuteReader();
+            List<LivroAutor> edits = this.AssignLivAuts(reader);
+            return edits;
+        }
+
 
 
     }
