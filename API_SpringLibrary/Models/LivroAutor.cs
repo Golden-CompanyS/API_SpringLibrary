@@ -24,7 +24,7 @@ namespace API_SpringLibrary.Models
 
         public int IdAut { get; set; }
 
-        public Livro NomLiv { get; set; }
+        public Livro TitLiv { get; set; }
 
         public Autor NomAut { get; set; }
 
@@ -34,15 +34,33 @@ namespace API_SpringLibrary.Models
         public LivroAutor AssignLivAut(MySqlDataReader reader)
         {
             LivroAutor tempLivAut = new LivroAutor();
+            Autor tempAut = new Autor();
+            Livro tempLiv = new Livro();
             if (reader.Read())
             {
                 tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
                 tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
-                string nome = reader["nomLiv"].ToString();
-                tempLivAut.NomLiv = nome;
-                tempLivAut.NomAut = reader["nomAut"].ToString();
+                tempLiv.TitLiv = reader["titLiv"].ToString();
+                tempAut.NomAut = reader["nomAut"].ToString();
             }
             return tempLivAut;
+        }
+
+        public List<LivroAutor> AssignLivAuts(MySqlDataReader reader)
+        {
+            List<LivroAutor> editList = new List<LivroAutor>();
+            while (reader.Read())
+            {
+                LivroAutor tempLivAut = new LivroAutor();
+                Autor tempAut = new Autor();
+                Livro tempLiv = new Livro();
+                tempLivAut.IdAut = int.Parse(reader["idAut"].ToString());
+                tempLivAut.ISBNLiv = reader["ISBNLiv"].ToString();
+                tempLiv.TitLiv = reader["titLiv"].ToString();
+                tempAut.NomAut = reader["nomAut"].ToString();
+                editList.Add(tempLivAut);
+            }
+            return editList;
         }
 
 
