@@ -95,10 +95,10 @@ call spcadLiv(
 );
 call spinsertAutLiv(9786555980004, 1);
 
-select titLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;
+select titLiv, lv.ISBNLiv, imgLiv, precoLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;
 
 -- Teste
-select nomAut, lv.ISBNLiv, titLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = "Oscar Wilde";
+select nomAut, lv.ISBNLiv, imgLiv, precoLiv, titLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = "Oscar Wilde";
 
 call spcadLiv(
 	9786255980204,
