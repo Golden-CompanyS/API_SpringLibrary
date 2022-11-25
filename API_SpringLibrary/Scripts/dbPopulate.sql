@@ -97,6 +97,18 @@ call spinsertAutLiv(9786555980004, 1);
 
 select titLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;
 
+-- Teste
+select nomAut, lv.ISBNLiv, titLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = "Oscar Wilde";
+
+call spcadLiv(
+	9786255980204,
+	'Poema de Dorian Gray', null,
+	'Testando.',
+	'https://darkside.vteximg.com.br/arquivos/ids/176889-519-519/o-retrato-de-dorian-gray-0.png?v=637655004666100000',
+    1,320,1,2021,30.00,200,true,4,9, 1
+);
+call spinsertAutLiv(9786255980204, 1);
+
 call spcadLiv('9788594540188','Frankenstin',null,'Sinopse','linkImg',1,283,2,1991,39.99,300,true,4,7, 2);
 call spinsertAutLiv(9788594540188, 2);
 call spinsertAutLiv(9788594540188, 3);

@@ -10,14 +10,19 @@ namespace API_SpringLibrary.Models
 {
     public class Livro
     {
-        public Livro(string titLiv)
+
+        // Tirou funcionário pela API -> não vai usar no Mobile
+
+        public Livro (string titLiv, string imgLiv, float precoLiv)
         {
             TitLiv = titLiv;
+            ImgLiv = imgLiv;
+            PrecoLiv = precoLiv;
         }
 
         public Livro(string isbnLiv, string titLiv, string titOriLiv, string sinopLiv, string imgLiv, string pratLiv, 
             int numPagLiv, int numEdicaoLiv, int anoLiv, float precoLiv, int qtdLiv, bool ativoLiv, int idEdit, 
-            int idGen, int idFunc)
+            int idGen)
         {
             ISBNLiv = isbnLiv;
             TitLiv = titLiv;
@@ -33,7 +38,6 @@ namespace API_SpringLibrary.Models
             AtivoLiv = ativoLiv;
             IdEdit = idEdit;
             IdGen = idGen;
-            IdFunc = idFunc;
         }
 
         public Livro()
@@ -66,9 +70,12 @@ namespace API_SpringLibrary.Models
 
         public int IdEdit { get; set; }
 
+        public Editora EditLiv { get; set; }
+
         public int IdGen { get; set; }
 
-        public int IdFunc { get; set; }
+        public Genero GenLiv { get; set; }
+
 
         MySqlCommand command = DatabaseHelper.CriaComando();
 
@@ -91,10 +98,10 @@ namespace API_SpringLibrary.Models
                 tempLiv.QtdLiv = int.Parse(reader["qtdLiv"].ToString());
                 tempLiv.AtivoLiv = bool.Parse(reader["ativoLiv"].ToString());
                 tempLiv.IdEdit = int.Parse(reader["idEdit"].ToString());
-                //Terminar aqui dps 
+                tempLiv.EditLiv = new Editora() { NomEdit = reader["nomEdit"].ToString() };
                 tempLiv.IdGen = int.Parse(reader["idGen"].ToString());
-                // terminar aqui dps
-                tempLiv.IdFunc = int.Parse(reader["idFunc"].ToString());
+                tempLiv.GenLiv = new Genero() { NomGen = reader["nomGen"].ToString() };
+                
             }
             return tempLiv;
         }

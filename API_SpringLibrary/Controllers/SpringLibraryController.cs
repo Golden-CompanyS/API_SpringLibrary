@@ -732,6 +732,23 @@ namespace API_SpringLibrary.Controllers
             }
         }
 
+        //Pegando autores pelo nome
+        [HttpGet]
+        [ActionName("getAutLivByName")]
+        public IEnumerable<LivroAutor> GetAutLivByName(string name)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = livaut.GetAutLivByParameter(name);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
 
     }
 }
