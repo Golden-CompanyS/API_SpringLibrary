@@ -77,7 +77,7 @@ namespace API_SpringLibrary.Models
             return edits;
         }
 
-        public IEnumerable<LivroAutor> GetAutLivByParameter(string column)
+        public IEnumerable<LivroAutor> GetAutLivByName(string column)
         {
             string query = "select nomAut, lv.ISBNLiv, titLiv, imgLiv, precoLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = 'placeholder'";
             query = query.Replace("placeholder", column);

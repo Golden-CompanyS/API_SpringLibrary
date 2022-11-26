@@ -711,6 +711,7 @@ namespace API_SpringLibrary.Controllers
 
         // Get:
 
+        //Todos os livros
         [HttpGet]
         [ActionName("getAllLivros")]
         public IEnumerable<Livro> GetAllLivros()
@@ -730,6 +731,26 @@ namespace API_SpringLibrary.Controllers
                 db.FechaConexao();
             }
         }
+
+        //Livro por gênero
+
+        [HttpGet]
+        [ActionName("getLivByGenero")]
+        public IEnumerable<Livro> GetLivByGenero(string genero)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = liv.GetLivByGenero(genero);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
+
 
         // LivroAutor métodos 
 
@@ -764,7 +785,7 @@ namespace API_SpringLibrary.Controllers
             try
             {
                 db.OpenConexao();
-                var res = livaut.GetAutLivByParameter(name);
+                var res = livaut.GetAutLivByName(name);
                 db.FechaConexao();
                 return res;
             }
@@ -773,6 +794,8 @@ namespace API_SpringLibrary.Controllers
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
         }
+
+
 
     }
 }

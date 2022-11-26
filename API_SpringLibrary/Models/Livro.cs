@@ -97,9 +97,7 @@ namespace API_SpringLibrary.Models
                 tempLiv.PrecoLiv = float.Parse(reader["precoLiv"].ToString());
                 tempLiv.QtdLiv = int.Parse(reader["qtdLiv"].ToString());
                 tempLiv.AtivoLiv = bool.Parse(reader["ativoLiv"].ToString());
-                tempLiv.IdEdit = int.Parse(reader["idEdit"].ToString());
                 tempLiv.EditLiv = new Editora() { NomEdit = reader["nomEdit"].ToString() };
-                tempLiv.IdGen = int.Parse(reader["idGen"].ToString());
                 tempLiv.GenLiv = new Genero() { NomGen = reader["nomGen"].ToString() };
                 
             }
@@ -124,9 +122,7 @@ namespace API_SpringLibrary.Models
                 tempLiv.PrecoLiv = float.Parse(reader["precoLiv"].ToString());
                 tempLiv.QtdLiv = int.Parse(reader["qtdLiv"].ToString());
                 tempLiv.AtivoLiv = bool.Parse(reader["ativoLiv"].ToString());
-                tempLiv.IdEdit = int.Parse(reader["idEdit"].ToString());
                 tempLiv.EditLiv = new Editora() { NomEdit = reader["nomEdit"].ToString() };
-                tempLiv.IdGen = int.Parse(reader["idGen"].ToString());
                 tempLiv.GenLiv = new Genero() { NomGen = reader["nomGen"].ToString() };
                 editList.Add(tempLiv);
             }
@@ -141,6 +137,17 @@ namespace API_SpringLibrary.Models
             var reader = command.ExecuteReader();
             List<Livro> edits = this.AssignLivs(reader);
             return edits;
+        }
+
+        // Pegando livro a partir de um gênero
+        public IEnumerable<Livro> GetLivByGenero(string column)
+        {
+            string query = "select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv inner join tbGenero as gen on lv.IdGen = gen.IdGen inner join tbEditora as edit on lv.IdEdit = edit.IdEdit where nomGen = 'placeholder'";
+            query = query.Replace("placeholder", column);
+            command.CommandText = query;
+            var reader = command.ExecuteReader();
+            IEnumerable<Livro> res = this.AssignLivs(reader);
+            return res;
         }
 
     }
