@@ -13,19 +13,20 @@ namespace API_SpringLibrary.Controllers
 {
     public class SpringLibraryController : ApiController
     {
-        // Para encontrar db
+        // Para encontrar DatabaseHelper!
         DatabaseHelper db = new DatabaseHelper();
 
-        // Models 
+        // Models para melhor localização ao decorrer do código
         Editora edit = new Editora();
         Cliente cli = new Cliente();
         ClienteFisico cliF = new ClienteFisico();
         ClienteJuridico cliJ = new ClienteJuridico();
         Autor aut = new Autor();
         Genero gen = new Genero();
-        Livro liv = new Livro(); //ainda nn fiz os métodos 
+        Livro liv = new Livro();
         LivroAutor livaut = new LivroAutor();
 
+        //Comando caso necessário
         MySqlCommand command = DatabaseHelper.CriaComando();
 
         // Editora metódos 
@@ -767,7 +768,6 @@ namespace API_SpringLibrary.Controllers
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
         }
-
 
         // LivroAutor métodos 
 
