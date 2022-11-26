@@ -751,6 +751,23 @@ namespace API_SpringLibrary.Controllers
             }
         }
 
+        [HttpGet]
+        [ActionName("getLivByEditora")]
+        public IEnumerable<Livro> GetLivByEditora(string editora)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = liv.GetLivByEditora(editora);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
+
 
         // LivroAutor métodos 
 

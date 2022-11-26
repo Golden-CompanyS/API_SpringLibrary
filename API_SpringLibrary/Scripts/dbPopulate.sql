@@ -101,6 +101,10 @@ select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdic
 
 select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv left join tbGenero as gen on lv.IdGen = gen.IdGen left join tbEditora as edit on lv.IdEdit = edit.IdEdit;
 
+select  ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv inner join tbGenero as gen on lv.IdGen = gen.IdGen  inner join tbEditora as edit on lv.IdEdit = edit.IdEdit where nomGen = "Romance";
+
+select  ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv inner join tbGenero as gen on lv.IdGen = gen.IdGen  inner join tbEditora as edit on lv.IdEdit = edit.IdEdit where nomEdit = "Darkside";
+
 -- Teste
 select nomAut, lv.ISBNLiv, imgLiv, precoLiv, titLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = "Oscar Wilde";
 

@@ -150,5 +150,16 @@ namespace API_SpringLibrary.Models
             return res;
         }
 
+        // Pegando livro a partir de uma editora
+        public IEnumerable<Livro> GetLivByEditora(string column)
+        {
+            string query = "select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv inner join tbGenero as gen on lv.IdGen = gen.IdGen inner join tbEditora as edit on lv.IdEdit = edit.IdEdit where nomEdit = 'placeholder'";
+            query = query.Replace("placeholder", column);
+            command.CommandText = query;
+            var reader = command.ExecuteReader();
+            IEnumerable<Livro> res = this.AssignLivs(reader);
+            return res;
+        }
+
     }
 }
