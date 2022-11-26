@@ -15,18 +15,9 @@ Essa API tem como enfoque a entrega do TCC, que une os conhecimentos desde o Pri
 Essa API servirá para consumir a aplicação Mobile, presente no repositório dessa organização, com dados vindo diretamente do Banco MYSQL, localizado na pasta de Scripts.
 
 ## Linguagem utilizada
-
-<p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/C_Sharp_wordmark.svg/200px-C_Sharp_wordmark.svg.png" witdh=115 />
-  </p>
-  
-  <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Javascript-shield.svg/397px-Javascript-shield.svg.png" width=115>
-  </p>
-  
-  <p align="center">
   <img src="https://miro.medium.com/max/1400/1*DZyivhX9QpnKxovKyQjZEw.png" width=115 />
-  </p>
 
 ## Andamento do projeto
 
