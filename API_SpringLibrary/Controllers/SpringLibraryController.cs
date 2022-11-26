@@ -707,7 +707,31 @@ namespace API_SpringLibrary.Controllers
             return res;
         }
 
-        // LivroAutor metódos 
+        // Livro métodos
+
+        // Get:
+
+        [HttpGet]
+        [ActionName("getAllLivros")]
+        public IEnumerable<Livro> GetAllLivros()
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = liv.GetAllLivros();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            finally
+            {
+                db.FechaConexao();
+            }
+        }
+
+        // LivroAutor métodos 
 
         // Metódos Get:
 

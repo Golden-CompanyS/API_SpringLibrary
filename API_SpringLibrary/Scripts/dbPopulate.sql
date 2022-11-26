@@ -97,6 +97,10 @@ call spinsertAutLiv(9786555980004, 1);
 
 select titLiv, lv.ISBNLiv, imgLiv, precoLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;
 
+select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv left join tbGenero as gen on lv.IdGen = gen.IdGen left join tbEditora as edit on lv.IdEdit = edit.IdEdit;
+
+select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv left join tbGenero as gen on lv.IdGen = gen.IdGen left join tbEditora as edit on lv.IdEdit = edit.IdEdit;
+
 -- Teste
 select nomAut, lv.ISBNLiv, imgLiv, precoLiv, titLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = "Oscar Wilde";
 

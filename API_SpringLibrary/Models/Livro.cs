@@ -106,5 +106,42 @@ namespace API_SpringLibrary.Models
             return tempLiv;
         }
 
+        public List<Livro> AssignLivs(MySqlDataReader reader)
+        {
+            List<Livro> editList = new List<Livro>();
+            while (reader.Read())
+            {
+                Livro tempLiv = new Livro();
+                tempLiv.ISBNLiv = reader["ISBNLiv"].ToString();
+                tempLiv.TitLiv = reader["titLiv"].ToString();
+                tempLiv.TitOriLiv = reader["titOriLiv"].ToString();
+                tempLiv.SinopLiv = reader["sinopLiv"].ToString();
+                tempLiv.ImgLiv = reader["imgLiv"].ToString();
+                tempLiv.PratLiv = reader["pratLiv"].ToString();
+                tempLiv.NumPagLiv = int.Parse(reader["numPagLiv"].ToString());
+                tempLiv.NumEdicaoLiv = int.Parse(reader["numEdicaoLiv"].ToString());
+                tempLiv.AnoLiv = int.Parse(reader["anoLiv"].ToString());
+                tempLiv.PrecoLiv = float.Parse(reader["precoLiv"].ToString());
+                tempLiv.QtdLiv = int.Parse(reader["qtdLiv"].ToString());
+                tempLiv.AtivoLiv = bool.Parse(reader["ativoLiv"].ToString());
+                tempLiv.IdEdit = int.Parse(reader["idEdit"].ToString());
+                tempLiv.EditLiv = new Editora() { NomEdit = reader["nomEdit"].ToString() };
+                tempLiv.IdGen = int.Parse(reader["idGen"].ToString());
+                tempLiv.GenLiv = new Genero() { NomGen = reader["nomGen"].ToString() };
+                editList.Add(tempLiv);
+            }
+            return editList;
+        }
+
+        //Métodos
+
+        public List<Livro> GetAllLivros()
+        {
+            command.CommandText = ("select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv left join tbGenero as gen on lv.IdGen = gen.IdGen left join tbEditora as edit on lv.IdEdit = edit.IdEdit;");
+            var reader = command.ExecuteReader();
+            List<Livro> edits = this.AssignLivs(reader);
+            return edits;
+        }
+
     }
 }
