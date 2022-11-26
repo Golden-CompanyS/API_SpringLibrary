@@ -6,6 +6,12 @@
 
 API desenvolvida por Leticia Resina, em sua maioria. Com auxílio dos programadores Gustavo Pereira e Larissa Sonoda.
 
+## Perfil dos desenvolvedores:
+
+[<img src="https://avatars.githubusercontent.com/u/80417466?v=4" width=115 /><br><sub> Leticia Resina </sub>](https://github.com/letyresina)
+[<img src="https://avatars.githubusercontent.com/u/82532010?v=4" width=115 /><br<sub> Gustavo Pereira </sub>](https://github.com/PereiraGus)
+[<img src="https://avatars.githubusercontent.com/u/82535458?v=4" width=115 /><br><sub> Larissa Sonoda <sub>](https://github.com/LarissaSonoda)
+
 ##
 
 Essa API tem como enfoque a entrega do TCC, que une os conhecimentos desde o Primeiro Ano do Ensino Médio integrado ao Desenvolvimento de sistemas na ETEC Professor Basilides de Godoy. Essa é a entrega final.
@@ -17,5 +23,5 @@ Essa API servirá para consumir a aplicação Mobile, presente no repositório d
 ##
 
 <p align = "center">
-<img src="https://camo.githubusercontent.com/459f141bd5e24c179a0e2dd49691e290ed5c5d4b4cb97767daee7cfaf6e31121/687474703a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d535441545553266d6573736167653d434f4e434c5549444f26636f6c6f723d47"
+<img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/>
 </p>
