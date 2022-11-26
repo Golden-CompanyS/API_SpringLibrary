@@ -2,17 +2,14 @@
 
 ![Logo_Tema_Claro](https://user-images.githubusercontent.com/80417466/204097070-12365f5d-71a3-43c0-b86c-458c84d15c1b.png)
 
-##
-
-API desenvolvida por Leticia Resina, em sua maioria. Com auxílio dos programadores Gustavo Pereira e Larissa Sonoda.
 
 ## Perfil dos desenvolvedores:
 
 | [<img src="https://avatars.githubusercontent.com/u/80417466?v=4" width=115><br><sub>Leticia Resina</sub>](https://github.com/letyresina) 
-|  [<img src="https://avatars.githubusercontent.com/u/82532010?v=4" width=115><br><sub>Gustavo Pereira</sub>](https://github.com/PereiraGus) 
-|  [<img src="https://avatars.githubusercontent.com/u/82535458?v=4" width=115><br><sub>Larissa Sonoda</sub>](https://github.com/LarissaSonoda) 
+| [<img src="https://avatars.githubusercontent.com/u/82532010?v=4" width=115><br><sub>Gustavo Pereira</sub>](https://github.com/PereiraGus) 
+| [<img src="https://avatars.githubusercontent.com/u/82535458?v=4" width=115><br><sub>Larissa Sonoda</sub>](https://github.com/LarissaSonoda) 
 |
-| :---: | :---: | :---: 
+| :---: | :---: | :---: |
 
 ##
 
