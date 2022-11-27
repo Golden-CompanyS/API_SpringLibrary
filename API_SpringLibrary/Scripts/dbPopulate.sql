@@ -6,6 +6,12 @@ CALL spcadEdit("Primier", 45944886612, "primier.contato@gmail.com");
 CALL spcadEdit("Darkside", 1136189809, 'vc@darksidebooks.com');
 CALL spcadEdit("Intrínseca", 2132067400, 'contato@intrinseca.com.br');
 CALL spcadEdit('Arqueiro', 1134560987, 'arqueiro@contato.com.br');
+CALL spcadEdit('Harper Collins', null, 'vendas@harpercollins.com.br');
+CALL spcadEdit('Faro Editorial', 1142080868, 'contato@faroeditorial.com.br');
+CALL spcadEdit('Suma', 2139937510, 'site@companhiadasletras.com.br');
+CALL spcadEdit('Grupo Record - BestBolso', null, 'sac@record.com.br');
+CALL spcadEdit('Grupo Record - Galera', null, 'sac@record.com.br');
+CALL spcadEdit('Penguin', null, 'consumerservices@penguinrandomhouse.com');
 
 CALL spcheckAllEdit();
 
@@ -58,6 +64,13 @@ CALL spcadAut("Ozcar Wailde");
 CALL spcadAut("Lucy Foley");
 CALL spcadAut("Mary Shelley");
 CALL spcadAut('Lucinda Riley');
+CALL spcadAut('C. S. Lewis');
+CALL spcadAut('Augusto Alvarenga');
+CALL spcadAut('Vinícius Grossos');
+CALL spcadAut('Daniel Glattauer');
+CALL spcadAut('Sophie Kinsella');
+CALL spcadAut('Elayne Baeta');
+CALL spcadAut('Sue Townsend');
 
 CALL spcheckAllAut();
 
@@ -95,31 +108,46 @@ call spcadLiv(
 );
 call spinsertAutLiv(9786555980004, 1);
 
-select titLiv, lv.ISBNLiv, imgLiv, precoLiv, nomAut from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv;
-
-select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv left join tbGenero as gen on lv.IdGen = gen.IdGen left join tbEditora as edit on lv.IdEdit = edit.IdEdit;
-
-select ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv left join tbGenero as gen on lv.IdGen = gen.IdGen left join tbEditora as edit on lv.IdEdit = edit.IdEdit;
-
-select  ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv inner join tbGenero as gen on lv.IdGen = gen.IdGen  inner join tbEditora as edit on lv.IdEdit = edit.IdEdit where nomGen = "Romance";
-
-select  ISBNLiv, titLiv, titOriLiv, sinopLiv, imgLiv, pratLiv, numPagLiv, numEdicaoLiv, anoLiv, precoLiv, qtdLiv, ativoLiv, nomGen, nomEdit from tbLivro as lv inner join tbGenero as gen on lv.IdGen = gen.IdGen  inner join tbEditora as edit on lv.IdEdit = edit.IdEdit where nomEdit = "Darkside";
-
--- Teste
-select nomAut, lv.ISBNLiv, imgLiv, precoLiv, titLiv from tbAutor as aut inner join tbLivroAutor as lva on aut.idAut = lva.idAut inner join tbLivro as lv on lva.ISBNLiv = lv.ISBNLiv where aut.nomAut = "Oscar Wilde";
-
-call spcadLiv(
-	9786255980204,
-	'Poema de Dorian Gray', null,
-	'Testando.',
-	'https://darkside.vteximg.com.br/arquivos/ids/176889-519-519/o-retrato-de-dorian-gray-0.png?v=637655004666100000',
-    1,320,1,2021,30.00,200,true,4,9, 1
-);
-call spinsertAutLiv(9786255980204, 1);
-
 call spcadLiv('9788594540188','Frankenstin',null,'Sinopse','linkImg',1,283,2,1991,39.99,300,true,4,7, 2);
 call spinsertAutLiv(9788594540188, 2);
 call spinsertAutLiv(9788594540188, 3);
+
+call spCadLiv('8579606179', 
+		'Coleção Turma dos Vegetais: Batata', 
+        'Coleção Turma dos Vegetais: Batata',
+        'Como foram os ingleses os grandes responsáveis 
+        pela difusão do consumo da batata, por muito tempo,
+        no Brasil, ela foi chamada de batata inglesa. Depois ficou somente batata, 
+        com o adjetivo "doce" diferenciando a outra espécie. Na versão tradicional ou doce, 
+        a batata está presente na lista dos alimentos mais consumidos no mundo, graças à sua versatilidade.
+        Frita, assada, cozida ou até crua, ela é encontrada em uma imensa variedade de pratos. Neste livro,
+        você vai conhecer mais sobre suas propriedades e como preparar 18 deliciosas receitas com esse versátil alimento.',
+        'https://m.media-amazon.com/images/I/51x1JKl5eEL._SY477_BO1,204,203,200_.jpg',
+        100, 52, 1, 2022, 11.90, 29, true, 6, 8, 2);
+
+call spCadLiv('8579606217',
+		'Coleção Turma dos Vegetais: Brócolis',
+		'Coleção Turma dos Vegetais: Brócolis',
+        'Brócolis: Ele ficou famoso na Europa durante os anos do Império Romano. Porém, de lá para cá, 
+        muitas descobertas foram feitas e ele caiu no gosto popular. Além de muito saboroso, consumir
+        brócolis frescos e naturais com frequência blinda a saúde contra diversas doenças.
+        Membro da numerosa família das Brassicas, esta hortaliça é uma das melhores fontes 
+        de cálcio, que dá aquela proteção básica para os ossos. Fonte de vitamina C, 
+        ele também melhora o sistema imunológico. Mas nada se compara ao seu poder de proteção
+        contra o câncer, principalmente os casos em que a doença atinge pulmão, próstata ou bexiga. 
+        Conheça mais sobre suas propriedades e como preparar 18 deliciosas receitas com esse poderoso alimento.',
+        'https://m.media-amazon.com/images/I/51u8f9mLrfL._SY476_BO1,204,203,200_.jpg',
+        100, 34, 4, 2022, 10.30, 152, true, 3, 5, 1);
+
+call spCadLiv('6586019117',
+'Coleção Turma dos Vegetais: Abobrinha',
+'Coleção Turma dos Vegetais: Abobrinha',
+'Rica em água e fibra, dois compostos que ajudam a digestão reduzindo o risco de constipação
+ e vários distúrbios intestinais, a abobrinha é excelente para diabéticos. E por ser um alimento de
+ baixa caloria, ajuda na saciedade, o que contribuir para a perda de peso a longo prazo. Além das fibras,
+ por também conter potássio, ela diminui a pressão sanguínea, o colesterol e outros fatores de risco para doenças cardíacas.',
+'https://m.media-amazon.com/images/I/51g9oDfHTyL._SY477_BO1,204,203,200_.jpg',
+100, 30, 4, 2000, 9.90, 26, true, 4, 2, 5);
 
 call spCadLiv(
 	'9786555652956',
@@ -130,6 +158,79 @@ call spCadLiv(
 	4,384,1,2022,39.99,29,true,6,7, 2
 );
 call spinsertAutLiv(9786555652956, 4);
+
+call spCadLiv(
+	'9780064471046',
+    'The Lion, the Witch and the Wardrobe',null,
+	"Four adventurous siblings—Peter, Susan, Edmund, and Lucy Pevensie—step through a wardrobe door and into the land of Narnia, a land frozen in eternal winter and enslaved by the power of the White Witch. But when almost all hope is lost, the return of the Great Lion, Aslan, signals a great change . . . and a great sacrifice. The Lion, the Witch and the Wardrobe is the second book in C. S. Lewis's classic fantasy series, which has been drawing readers of all ages into a magical land with unforgettable characters for over sixty years. This is a stand-alone read, but if you would like to explore more of the Narnian realm, pick up The Horse and His Boy, the third book in The Chronicles of Narnia.",
+	'https://m.media-amazon.com/images/I/51sQcUYpM9L.jpg',
+	5,224,1,2002,50.70,49,true,7,1,2);
+call spinsertAutLiv(9780064471046, 5);
+
+call spCadLiv(
+	'8562409693',
+    '1+1: A matemática do amor',null,
+	"Lucas e Bernardo são dois garotos, melhores amigos um do outro. De repente, recebem a notícia de que Bernardo irá se mudar com a família para outro país. E percebem que não querem perder a valiosa amizade... Lucas tenta transformar cada dia que resta com o amigo na melhor experiência de suas vidas: escreve uma lista de coisas para fazer epretende cumprir uma por uma, em todos os detalhes. Então os meninos percebem que há algo mais forte entre eles... Um sentimento profundo, que não conseguem explicar e que torna todas aquelas experiências ainda mais intensas. Mas o que fazer com tudo isso quando se tem apenas 16 anos?",
+	'https://m.media-amazon.com/images/I/81R3A6H34VL.jpg',
+	4,256,1,2016,30.90,200,true,8,11,6);
+call spinsertAutLiv(8562409693, 6);
+call spinsertAutLiv(8562409693, 7);
+
+call spCadLiv(
+	'8581051243',
+    '@mor','Gut gegen Nordwind',
+	"Num e-mail enviado por engano, começa um relacionamento virtual que testa as convicções de Leo Leike e Emmi Rothner. Leo Leike, ainda digerindo o fracasso de seu último relacionamento, responde de forma espirituosa a duas mensagens enviadas por engano por Emmi Rothner, casada. Inicialmente, ela só queria cancelar uma assinatura de revista. Depois, inclui Leo por engano entre os destinatários de um e-mail de boas festas. Na terceira troca de e-mails, o mal-entendido dá lugar à atração mútua, reforçada pelo fato de um nunca ter visto o outro. Nada como a curiosidade instigada por frases bem encadeadas chegando a intervalos regulares numa caixa postal eletrônica para que os dois se esqueçam dos possíveis impedimentos. A cada dia, Leo e Emmi se sentem mais impelidos a marcarem um encontro. Após trocas contínuas de mensagens, está claro para ambos que o marido dela e as feridas emocionais dele não serão obstáculos para que marquem um encontro. O único obstáculo real é a insegurança de ambos quanto à transformação da fantasia em realidade.",
+	'https://m.media-amazon.com/images/I/51xFx2aO9hL.jpg',
+	8,188,1,2013,24.90,250,true,9,9,2);
+call spinsertAutLiv(8581051243, 8);
+
+call spCadLiv(
+	'8581051367',
+    'Emmi & Léo','Alle sieben Wellen',
+	"Em @mor, o escritor e jornalista austríaco Daniel Glattauer se utiliza dos princípios dos romances epistolares - trocas de cartas - com uma roupagem contemporânea: o contato virtual. Ao contar a fortuita atração mútua entre os jovens Leo Leike e Emmi Rothner por meio de conversas por e-mails e os sentimentos que desenvolvem um pelo outro, o autor utiliza pontos de vista alternados para contar uma inusitada história de amor. Emmi & Leo: a sétima onda é a sequência dessa história tão intrigante quanto inusitada e que surgiu por erro de endereçamento no envio de um email. Na atual etapa, Leo Leike retorna de Boston após uma longa ausência, e é recebido por uma caixa de emails lotada de notícias de Emmi Rothner. O sentimento dos dois não mudou, e eles reiniciam a troca de mensagens. Só que agora Leo está namorando a americana Pamela, e Emmi continua casada. A orgulhosa Emmi e o tímido Leo nunca estiveram tão próximos, e ao mesmo tempo tão distantes. Daniel Glattauer reconquista os leitores e a crítica internacional com seu peculiar olhar sobre as relações amorosas dos tempos atuais. A prova do fenômeno editorial da dupla de romances: @mor e Emmi & Leo foram traduzidos para quarenta idiomas e tiveram 64 montagens teatrais na Alemanha e Áustria.",
+	'https://m.media-amazon.com/images/I/41dMWeuNu+L.jpg',
+	8,168,1,2013,16.00,250,true,9,9,2);
+call spinsertAutLiv(8581051367, 8);
+
+call spCadLiv(
+	'8501076740',
+    'Samantha Sweet: A executiva do lar','The Undomestic Goddess',
+	"Em SAMANTHA SWEET, EXECUTIVA DO LAR, Sophie Kinsella faz uma divertida crítica à pressa ― e às pressões ― da vida moderna. Com ironia e leveza, a autora mostra porque é considerada uma das principais vozes da nova geração literária na terra do velho bardo. Sucesso de público e crítica, a trama já teve os direitos comprados pela Universal.Samantha Sweet está prestes a se tornar sócia da firma de advocacia onde trabalha. Isso se ela não tivesse cometido a maior mancada de sua trajetória profissional. Um erro tão absurdamente grave, que custará à empresa milhões de libras. Completamente baratinada pelo furo, ela surta. Pega o primeiro trem para fora da cidade e vai parar na entrevista de emprego mais equivocada de sua vida. Sua natureza competitiva logo é ativada e ela decide que será contratada, sem se preocupar com o cargo.Assim, nossa heroína ganha um novo plano de carreira: como empregada doméstica de uma socialite deslumbrada. Sem nem ao menos saber como ligar o ferro de passar. Ou para que diabos serve metade dos aparelhos de uma cozinha. Mas talvez ela não seja tão incapaz como doméstica quanto imagina. Talvez, com alguma ajuda, ela possa até fingir. Será que seus patrões descobrirão que sua empregada é de fato uma advogada de alto nível? Será que a antiga vida de Samantha irá alcançá-la? E, mesmo que isso aconteça... será que ela vai a querer de volta? SAMANTHA SWEET, EXECUTIVA DO LAR é a história de uma mulher que precisa diminuir o ritmo. Encontrar-se. Apaixonar-se.",
+	'https://m.media-amazon.com/images/I/71NLtDNjP6S.jpg',
+	5,512,7,2007,34.49,360,true,10,9,3);
+call spinsertAutLiv(8501076740, 9);
+
+call spCadLiv(
+	'6559810429',
+    'Oxe, baby',null,
+	'“Arraste uma cadeira e, se der, me leia”. É assim – despretensiosa, em um convite silencioso mas urgente – que Elayne introduz o leitor a Oxe, baby, seu primeiro livro de poesia. E é também nesse mesmo ritmo que são conduzidas as próximas páginas, em que, entre metáforas com casulos, morcegos e borboletas, a autora conta um pouco de si e de suas experiências como uma menina que ama meninas.
+
+Nascida e criada em Salvador, Elayne Baeta reuniu, ao longo de sua trajetória, alguns arranhões. Mas foram eles – doloridos – que a fizeram apurar seu senso crítico e firmar-se hoje como uma das vozes mais influentes da literatura jovem adulta LGBTQ+ no Brasil, desafiando o conservadorismo, a intolerância e o preconceito que ainda existem no país.
+
+Multifacetada, indo além da escrita, Elayne dedica-se também a podcasts e trabalhos como ilustradora, além de ser uma figura popular nas redes sociais: no auge de seus vinte e poucos anos acumula no Instagram mais de 40 mil seguidores e, no Twitter, 35 mil. Já na literatura, Elayne Baeta faz o que lhe cabe, e concede a personagens e existências por vezes marginalizadas um novo caminho. Uma outra chance.',
+	'https://m.media-amazon.com/images/I/71FbbQUcBsL.jpg',
+	5,224,3,2021,51.70,98,true,11,11,2);
+call spinsertAutLiv(6559810429, 10);
+
+call spCadLiv(
+	'0141399643',
+    'The Woman who Went to Bed for a Year',null,
+	"What happens when a duvet day turns into a duvet year?
+
+Sue Townsend, the bestselling author of the Adrian Mole series, returns with The Woman Who Went to Bed for a Year, a funny and touching novel about what happens when someone stops being the person everyone wants them to be.
+
+The day her twins leave home, Eva climbs into bed and stays there. For seventeen years she's wanted to yell at the world, 'Stop! I want to get off'. Finally, this is her chance.
+
+Her husband Brian, an astronomer having an unsatisfactory affair, is upset. Who will cook his dinner? Eva, he complains, is attention seeking. But word of Eva's defiance spreads.
+
+Legions of fans, believing she is protesting, gather in the street. While Alexander the white van man brings tea, toast and sympathy. And from this odd but comforting place Eva begins to see both herself and the world very, very differently. . .
+
+Bestselling author Sue Townsend has been Britain's favourite comic writer for over three decades.
+
+'Laugh-out-loud . . . a teeming world of characters whose foibles and misunderstandings provide glorious amusement. Something deeper and darker than comedy' Sunday Times",
+	'https://m.media-amazon.com/images/I/91+X7tkQd-L.jpg',
+	1,464,1,2012,55.62,12,true,12,27,3);
+call spinsertAutLiv(0141399643, 11);
 
 -- Retificando o nome do livro e retirando/recolocando a autora de ID 2
 call spaltLivro('9788594540188','Frankenstein',null,'Sinopse','linkImg',1,283,2,1991,39.99,300,0,2,4,7);
@@ -147,16 +248,6 @@ call spcadCliFis('Thiago Sartori', '1199340822', 'tinownsthiago@gmail.com', '$2a
 call spaltCliFis(2, 'Gus Rodrigues', '1194320943', 'gusthienx@gmail.com', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', "06300187", 33, 'Casa', 45982221222, '1990-12-25');
 
 select * from vwcheckCliFis;
-
-select * from vwcheckAllCli;
-
-call spCheckCliByEmail('jesuscristo@gmail.com');
-
-select * from tbCliFis;
-
-select tbCliente.idCli, nomCli, celCli, emailCli, senhaCli, CEPCli, numEndCli, compEndCli, CNPJCli, fantaCliJ, represCliJ from tbCliente inner join tbCliJur on tbCliente.idCli = tbCliJur.idCli;
-
-select tbCliente.idCli, nomCli, celCli, emailCli, senhaCli, CEPCli, numEndCli, compEndCli, CPFCliF, dtNascCliF from tbCliente inner join tbCliFis on tbCliente.idCli = tbCliFis.idCli;
 
 /* tbCliJur */
 call spcadCliJur('Loud', '1136570927', 'loud@suporte.com.br', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', '06210027', 10, 'Bloco 10', "01345846258741", 'LOUD GG', 'Thaiga');
