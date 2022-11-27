@@ -753,6 +753,23 @@ namespace API_SpringLibrary.Controllers
         }
 
         [HttpGet]
+        [ActionName("getLivByISBN")]
+        public IEnumerable<Livro> GetLivByISBN(string isbn)
+        {
+            try
+            {
+                db.OpenConexao();
+                var res = liv.GetLivByISBN(isbn);
+                db.FechaConexao();
+                return res;
+            }
+            catch
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+        }
+
+        [HttpGet]
         [ActionName("getLivByEditora")]
         public IEnumerable<Livro> GetLivByEditora(string editora)
         {
