@@ -20,6 +20,8 @@ Essa API servirá para consumir a aplicação Mobile, presente no repositório d
 
 ## Plataforma de desenvolvimento
 
+![image](https://user-images.githubusercontent.com/80417466/204288648-490a8bdb-f4a0-43aa-b72e-ba259aad94b0.png)
+
 Visual Studio 2022.
 
 ## Manual para acesso à API 
