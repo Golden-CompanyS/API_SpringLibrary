@@ -409,6 +409,12 @@ BEGIN
 	select * from tbCliente WHERE(nomCli = $vnomCli);
 END$$
 
+DELIMITER $$ 
+CREATE PROCEDURE spCheckCliByEmail($vemailCli varchar(125))
+BEGIN
+	select * from tbCliente where(emailCli = $vemailCli);
+END $$
+
 /* Como a tabela tbLivroAutor é composta por foreign keys, FOREIGN_KEY_CHECKS deve ser
 mudado para 0, desativando proibição quanto à alteração/exclusão destas */
 

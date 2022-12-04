@@ -247,6 +247,8 @@ call spcadCliFis('Thiago Sartori', '1199340822', 'tinownsthiago@gmail.com', '$2a
 
 call spaltCliFis(2, 'Gus Rodrigues', '1194320943', 'gusthienx@gmail.com', '$2a$10$EBgbnvn9BIFBmoUIDvxVmOTkqqevLcqPrCyLSltl1vCtmXG8clLka', "06300187", 33, 'Casa', 45982221222, '1990-12-25');
 
+call spCheckCliByEmail('jesuscristo@gmail.com');
+
 select * from vwcheckCliFis;
 
 /* tbCliJur */
