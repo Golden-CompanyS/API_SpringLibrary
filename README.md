@@ -36,13 +36,16 @@ Para utilizar à API é necessário a execução do banco de dados, tanto do "db
 4. Volte para a pasta inicial "API_SpringLibrary" e abra o API_SpringLibrary.sln. De preferência, na IDE Visual Studio 2022 ou 2019;
 5. Espere o projeto carregar. Caso dê o erro de "ISO" pela versão, clique em Compilação e limpe o projeto;
 6. Execute o projeto clicando no IIS Express (Google Chrome) e espee a página do google abrir;
-7. Quando a página carregar, abra já o swagger inspector para auxiliar nos processos a seguir. Link para acesso: https://inspector.swagger.io/builder;
-7.1 Caso não tenha a extensão de swagger inspector em seu computador, baixe-a. Usualmente, o próprio swagger avisa quando não há a extensão;
+7. Quando a página carregar, abra já o swagger inspector para auxiliar nos processos a seguir. Link para acesso: https://inspector.swagger.io/builder. Caso não tenha a extensão de swagger inspector em seu google, baixe-a. Usualmente, o próprio swagger avisa quando não há a extensão e te leva a página, sendo bem simples de resolver;
 8. Copie o link presente na Home, e copie novamente no swagger nessa barra: ![image](https://user-images.githubusercontent.com/80417466/204278181-10a582ce-1110-4873-8922-64a9f6f67d1a.png)
 9. A exemplo, assim: ![image](https://user-images.githubusercontent.com/80417466/204284491-6fb134ea-0c32-428d-b97a-e8aff88c3fbb.png)
 10. Depois, clique em "API" e escolha um dos métodos, copie e cole juntamente. Em casos de não for um que pega um nome em específico, só copie o metódo como exemplo: ![image](https://user-images.githubusercontent.com/80417466/204285253-87d1c117-423a-4c37-984b-5dc62e642366.png)
 11. Clique em send e espere retornar em Json. Esse exemplo é para os metódos que retornam tudo. Caso seja um de ID ou nome ou qualquer especificação, segue esse exemplo:![image](https://user-images.githubusercontent.com/80417466/204288300-2c1f1d10-f136-43d1-92a9-b663389adde6.png)
 12. Depois de executar toda a API, clique em fechar a página do google e pare a execução. Feche o Visual Studio caso necessário. 
+
+## Vídeo executando a API
+
+O vídeo foi utilizado na apresentação final do TCC. Ele explica brevemente, com base no manual, como executar a API. É válido ressaltar assistir o vídeo e ler o manual para saciar todas as dúvidas possíveis. Segue o link do Youtube: https://youtu.be/nUR-7T3ItH8
 
 ## Andamento do projeto
 
