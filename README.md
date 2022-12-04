@@ -1,7 +1,8 @@
-# API para a Aplicação Mobile Spring Library
+# API para a Aplicação Mobile
+
+## Empresa Desenvolvedora 
 
 ![Logo_Tema_Claro](https://user-images.githubusercontent.com/80417466/204097070-12365f5d-71a3-43c0-b86c-458c84d15c1b.png)
-
 
 ## Perfil da desenvolvedora e seus respectivos contribuinte:
 
