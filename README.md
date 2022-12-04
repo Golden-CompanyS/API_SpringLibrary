@@ -43,6 +43,10 @@ Para utilizar à API é necessário a execução do banco de dados, tanto do "db
 11. Clique em send e espere retornar em Json. Esse exemplo é para os metódos que retornam tudo. Caso seja um de ID ou nome ou qualquer especificação, segue esse exemplo:![image](https://user-images.githubusercontent.com/80417466/204288300-2c1f1d10-f136-43d1-92a9-b663389adde6.png)
 12. Depois de executar toda a API, clique em fechar a página do google e pare a execução. Feche o Visual Studio caso necessário. 
 
+## Vídeo executando a API
+
+O vídeo foi utilizado na apresentação final do TCC. Ele explica brevemente, com base no manual, como executar a API. É válido ressaltar assistir o vídeo e ler o manual para saciar todas as dúvidas possíveis. Segue o link do Youtube: https://youtu.be/nUR-7T3ItH8
+
 ## Andamento do projeto
 
 <p align = "center">
