@@ -60,6 +60,7 @@ O vídeo foi utilizado na apresentação final do TCC. Ele explica brevemente, c
 <img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge"/>
 </p>
 
+
 ## Copyright
 
 Copyright :copyright: 2022 - Spring Library.
